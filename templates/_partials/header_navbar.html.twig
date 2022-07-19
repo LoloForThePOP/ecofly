@@ -2,15 +2,9 @@
 
 <header>
 
-  <nav class="navbar navbar-dark navbar-expand-md fixed-top pb-0 bg-dark" style="border-bottom: 2px solid orange;">
+  <nav class="navbar navbar-expand-md fixed-top pb-0" style="border-bottom: 2px solid orange;">
 
     <div class="container-fluid ps-4 ps-md-5">
-
-      {# Left Navbar Toggler Button (only displayed on mobile)
-
-      <button class="d-md-none" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-expanded="false" aria-controls="collapseExample">
-        Outils
-      </button> #}
 
       {# Website Logo #}
 
@@ -26,7 +20,7 @@
 
         <li class="nav-item fs-5 me-3 d-none d-md-inline">
 
-          <a class="nav-link text-white" aria-current="page" href="/">Accueil</a>
+          <a class="nav-link" aria-current="page" href="/">Accueil</a>
 
         </li>
 
@@ -273,11 +267,11 @@
 
             <div class="d-md-none">
 
-              <h4 class="fw-bold text-white">Connexion</h4>
+              <h4 class="fw-bold">Connexion</h4>
                 
               <a href="{{ path('connect_google_start') }}">
 
-                <button class="btn text-white me-3">
+                <button class="btn me-3">
 
                     <img src="{{asset ('connect/google.svg', 'misc')}}" class="" alt="Google Logo" loading="lazy" width="50" height="50">
 
@@ -289,7 +283,7 @@
 
               <a href="{{ path('connect_facebook_start') }}">
 
-                  <button class="btn text-white">
+                  <button class="btn">
 
                       <img src="{{asset ('connect/facebook.svg', 'misc')}}" class="" alt="Facebook Logo" loading="lazy" width="50" height="50">
 
@@ -301,7 +295,7 @@
               
               <a href="{{path('app_login')}}">
 
-                <button class="btn text-white">
+                <button class="btn">
 
                   <img src="{{asset ('connect/email.svg', 'misc')}}" class="" alt="Facebook Logo" loading="lazy" width="50" height="50">
 
@@ -324,7 +318,7 @@
 
             <li class="d-none d-md-block nav-item dropdown rounded">
 
-              <a id="userAccountDropdown" class="nav-link dropdown-toggle btn btn-primary fw-bold text-white" href="#"
+              <a id="userAccountDropdown" class="nav-link dropdown-toggle btn btn-primary fw-bold" href="#"
                 role="button" data-bs-toggle="dropdown" aria-expanded="false"
                 style="padding: 6px 9px; margin-right: 10px;">
 
