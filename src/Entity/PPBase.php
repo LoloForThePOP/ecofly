@@ -239,8 +239,6 @@ class PPBase implements \Serializable, NormalizableInterface
 
         $this->data['validatedStringId'] = false; // flag to know wether presentation slug is still a randomized string (false) or user has validated his own slug (ex: propon.org/my-project instead of propon.org/tr3H2Y).
 
-        $this->data['remove-helper-invite'] = false; // flag to know wether displaying an helper invite to user is usefull anymore.
-
         $this->data['viewsCount'] = 0;
 
         $this->cache['thumbnailParentImageAddress'] = null;

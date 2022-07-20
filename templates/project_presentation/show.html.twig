@@ -135,18 +135,6 @@
     
     {% include 'project_presentation/_show/_upper_box.html.twig' %}
 
-    {# Notification invitation to use a automatic form for presenting project #}
-
-    {% if userPresenter and validatedStringId and not presentation.getDataItem('remove-helper-invite') %}
-
-        <div class="pp-edition-mode">
-
-            {% include 'project_presentation/_show/_notifications/helper_invite_level_2.html.twig' %}
-
-        </div>
-
-    {% endif %}
-
     
     {# Guest Presenter Sign Up Invitation #}
 

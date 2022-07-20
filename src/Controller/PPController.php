@@ -634,7 +634,7 @@ class PPController extends AbstractController
 
         $presentation->setDataItem('guest-presenter-token', $guestPresenterToken)
                     ->setDataItem("guest-presenter-activated", false)
-                    ->setGoal("Écrire ici l'objectif du Projet")
+                    ->setGoal("Écrire ici l'objectif du Projet (ex : créer un avion à hydrogène")
                     ->setCreator($newUser);
         
         $manager->persist($presentation);
@@ -645,7 +645,7 @@ class PPController extends AbstractController
 
             $this->addFlash(
                 'success',
-                "✅ Présentez librement votre projet ! <br> 🙋 Si vous avez besoin d'aide, utilisez le bouton d'aide en bas de page."
+                "✅ Merci de présenter un projet ! <br> 🙋 Si vous avez besoin d'aide, utilisez le bouton d'aide en bas de page."
             );
 
 

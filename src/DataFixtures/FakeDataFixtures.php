@@ -12,7 +12,6 @@ use App\Entity\Message;
 use App\Entity\Persorg;
 use App\Entity\Category;
 use App\Entity\Document;
-use App\Entity\Purchase;
 use App\Entity\Conversation;
 use App\Entity\ContributorStructure;
 use Doctrine\Persistence\ObjectManager;
@@ -899,31 +898,6 @@ class FakeDataFixtures extends Fixture
             $user->setDataItem("unreadMessagesCount", $unreadMessagesCount);
         }
  */
-
-        // Some Purchases
-
-        for($p=0; $p<mt_rand(20,40); $p++) {
-
-            $purchase = new Purchase();
-
-            $buyerEmail = $faker->email();
-
-            $buyerInfo=[];
-            $buyerInfo['telephone'] = $faker->phoneNumber();
-
-            // Hydrating Purchase :
-
-            if ($faker->boolean(90)) {
-                $purchase->setStatus("PAID");
-            }
-            $purchase->setRegistredUser($faker->randomElement($users));
-            $purchase->setBuyerEmail($buyerEmail);
-            $purchase->setBuyerInfo($buyerInfo);
-
-            $manager->persist($purchase);
-            
-
-        };
 
 
         $manager->flush();

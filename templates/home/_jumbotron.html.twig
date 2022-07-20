@@ -3,7 +3,7 @@
     {% block image %}
 
    
-        <img src="{{asset ('misc/homepage_plane_above_sea_and_islands.jpg', 'larger')}}" class="jumbotron-img d-block mx-lg-auto img-fluid" style="border-radius:0.5rem;" alt="A plane above the sea and islands" width="500" loading="lazy">
+        <img src="{{asset ('misc/homepage_plane_above_sea_and_islands.jpg', 'larger')}}" class="jumbotron-img d-block mx-lg-auto img-fluid" style="border-radius:0.2rem;" alt="A plane above the sea and islands" width="500" loading="lazy">
 
 
     {% endblock %}
@@ -12,28 +12,27 @@
 
         <h1 class="jumbotron-title display-5 lh-1">Techniques et Projets pour une Aviation Durable</h1>
 
-        <p class="text-center text-md-start lead">Comment <b>réduire l'empreinte écologique</b> du secteur aéronautique ? Ce site <b>collaboratif</b> répertorie les <b>techniques et projets en cours</b>. Votre participation est <b>bienvenue</b> 👍</p>
+        <p class="text-center text-md-start lead">Comment <b>réduire l'empreinte carbone</b> du secteur aéronautique ? Ce site <b>collaboratif</b> répertorie les <b>techniques et les projets en cours</b>. Votre participation est <b>bienvenue</b> 👍</p>
 
         <div class="d-flex flex-column flex-md-row justify-content-center align-items-center justify-content-md-start pt-3">
 
-            <a class="" href="{{path('static', {'page_name': "short_manifesto",})}}">
+            <a class="" href="{{path ('admin')}}">
   
-                <button class="jbtr-cta-btn fw-bold btn d-flex justify-content-center align-items-center light-button pt-2 pe-4 me-md-4" style="border-color: rgb(216, 216, 201); height:50px; padding-bottom: 10px;" data-track-click='{"key":"read-the-pop-manifesto"}'>
+                <button class="jbtr-cta-btn fw-bold btn d-flex justify-content-center align-items-center light-button pt-2 mb-3 mb-md-0 pe-4 me-md-4" style="border-color: rgb(216, 216, 201); height:50px; padding-bottom: 10px;" data-track-click='{"key":"read-the-pop-manifesto"}'>
 
-                    <span class="ps-1 h5 mb-1">> </span>
+                    <span class="ps-1 pe-1 h5 mb-1">🛠️ </span>
                     <span class="ps-1">Présenter une technique</span>
                 
                 </button>
           
             </a>
 
-            <a href="{{ path ('edit_presentation_as_guest_user') }}">
+            <a href="{{path ('edit_presentation_as_guest_user', {"landing":"wysiwyg"})}}">
 
-                <button class="jbtr-cta-btn btn light-button d-flex justify-content-center align-items-center px-3 pt-2 mb-3 mb-md-0" style="border-color: rgb(216, 216, 201);" data-track-click='{"key":"clicked-jumbotron-create-presentation"}'>
+                <button class="jbtr-cta-btn btn light-button d-flex justify-content-center align-items-center px-3 pt-2 mb-md-0" style="border-color: rgb(216, 216, 201); ; height:50px; padding-bottom: 10px;" data-track-click='{"key":"clicked-jumbotron-create-presentation"}'>
         
-                  <img class="mb-2" src="{{ asset('add_presentation.svg', 'misc')}}" alt="bucket with a plus icon">
-                  
-                  <span class="fw-bold ps-2">Présenter un projet</span>
+                    <span class="ps-1 h5 mb-1">🚀 </span>
+                    <span class="fw-bold ps-2">Présenter un projet</span>
               
                 </button>
         

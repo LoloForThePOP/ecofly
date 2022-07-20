@@ -15,7 +15,7 @@ class ProjectStatus
                 [
                     'uniqueName'=> 'general', 
 
-                    'description_fr'=> 'Votre projet est',                    
+                    'description_fr'=> 'Le projet est',                    
                 ],
             
             'items'=>  
