@@ -65,7 +65,7 @@ $(document).ready(function(){
   const search = instantsearch({
 
     //indexName: app_env+'_presentation_bases',
-    indexName: 'prod_presentation_bases', //new
+    indexName: 'prod_project_presentation', //new
 
     searchClient: algoliasearch(
 
