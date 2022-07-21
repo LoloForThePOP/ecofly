@@ -386,6 +386,20 @@ class FakeDataFixtures extends Fixture
         for ($j = 0; $j < 25; $j++) {
 
             $presentation = new PPBase();
+
+            if ($faker->boolean(85)) {
+
+                $presentation->setIsAdminValidated(true);
+            }
+
+            if ($faker->boolean(85)) {
+
+                $presentation->setOverallQualityAssessment(2);
+            }
+
+
+
+
             // Title Creation
 
             $title = null;

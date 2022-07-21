@@ -10,13 +10,14 @@
 {% block javascripts %}<script src="/js/show_more_less_button.js"></script>
 {% endblock %}
 
-{% import "utilities/_macro_titled_collection.html.twig" as display %}
+{% import "utilities/_macro_titled_collection.html.twig" as display %} {# project presentation cards #}
+{% import "utilities/_macro_titled_technics_collection.html.twig" as displayTechnics %} {# technic presentation cards #}
 
 {% block body %}
 
   <div class="page-container container-lg px-0 px-lg-3">
 
-     <div id="homepage-jumbotron-struct-container" class="px-0 px-md-4 px-lg-4 col-xxl-11">
+     <div id="homepage-jumbotron-struct-container" class="px-0 px-md-4 px-lg-4 container col-xxl-11">
 
         {% include "home/_jumbotron.html.twig" %}
 
@@ -36,6 +37,15 @@
         </style>
 
       </div>
+
+      {{ displayTechnics.collection("Les Techniques", technics, "", "hide-525") }}
+
+
+      {{ display.collection("Les Projets", lastInsertedProjects, "", "hide-525") }}
+
+
+
+
 
   </div> 
 

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Service\UluleAPI;
+use App\Repository\TechnicRepository;
 use Algolia\SearchBundle\SearchService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,19 +19,20 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index(EntityManagerInterface $manager): Response
+    public function index(EntityManagerInterface $manager, TechnicRepository $technicsRepo): Response
     {
              
-        /* UluleAPI $ulule,
-        $ulule->fetchProjectInfo(); just testing Ulule api*/
+
+        $technics = $technicsRepo->findAll();
 
 
         // last 20 inserted projects presentations
 
-        $lastInsertedPresentations = $manager->createQuery('SELECT p FROM App\Entity\PPBase p WHERE p.isPublished=true AND p.overallQualityAssessment>=2 AND p.isAdminValidated=true AND p.isDeleted=false ORDER BY p.createdAt DESC')->setMaxResults('30')->getResult();
+        $lastInsertedProjects = $manager->createQuery('SELECT p FROM App\Entity\PPBase p WHERE p.isPublished=true AND p.overallQualityAssessment>=2 AND p.isAdminValidated=true AND p.isDeleted=false ORDER BY p.createdAt DESC')->setMaxResults('30')->getResult();
 
         return $this->render("/home/homepage.html.twig", [
-            'lastInsertedPresentations' => $lastInsertedPresentations,
+            'lastInsertedProjects' => $lastInsertedProjects,
+            'technics' => $technics,
         ]);
 
     }

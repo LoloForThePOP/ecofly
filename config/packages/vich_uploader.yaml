@@ -52,3 +52,12 @@ vich_uploader:
             inject_on_load: true
             delete_on_update: true
             delete_on_remove: true
+            
+        technic_logo_image:
+                    
+            uri_prefix: /media/uploads/technics/logo
+            upload_destination: '%kernel.project_dir%/public/media/uploads/technics/logo'
+            
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true

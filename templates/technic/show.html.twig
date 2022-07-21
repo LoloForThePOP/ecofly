@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block name %}Ajouter une Méthode{% endblock %}
+
+{% block body %}
+
+    <div class="page-container container col-lg-8 px-2 mt-5">
+
+        <h2 class="fw-bold mb-4">{{technic.name[:1] | upper ~ technic.name[1:]}}</h2>
+
+        <div class="ps-md-2">
+
+            {{technic.textDescription | raw}}
+        
+        </div>
+
+        
+
+        {% if is_granted('ROLE_ADMIN') %}
+
+            {{ form_start(technicLogoForm) }}
+
+                {{form_widget(technicLogoForm)}}
+                <button type="submit" class="btn btn-validate mb-2 me-3">Valider</button>
+            {{ form_end(technicLogoForm) }}
+        
+        
+        {% endif %}
+
+    </div>
+
+
+{% endblock %}
