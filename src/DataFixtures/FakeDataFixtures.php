@@ -285,7 +285,7 @@ class FakeDataFixtures extends Fixture
 
         // One admin user creation
         
-        $admin = new User();
+        /* $admin = new User();
 
         $admin
             ->setUserName('TestUserName')
@@ -299,11 +299,11 @@ class FakeDataFixtures extends Fixture
             )
             ->setParameter('isVerified', true)
             ->setRoles(['ROLE_ADMIN']);
-
+ */
 
         // admin's avatar creation
 
-        $adminPersorg = new Persorg();
+        /* $adminPersorg = new Persorg();
         $hydratedPersorg = FakeDataFixtures::hydratePersorg($adminPersorg, 'person');
         $hydratedPersorg->setName($admin->getUserName());
         $admin->setPersorg($hydratedPersorg);
@@ -312,10 +312,10 @@ class FakeDataFixtures extends Fixture
 
         $users[] = $admin;
 
-
+ */
         // Another test user creation
 
-        $otherTestUser = new User();
+     /*    $otherTestUser = new User();
 
         $otherTestUser
             ->setUserName('OtherTestUserName')
@@ -327,11 +327,11 @@ class FakeDataFixtures extends Fixture
                     'test'
                 )
             )
-            ->setParameter('isVerified', true);
+            ->setParameter('isVerified', true); */
 
         
         // admin's avatar creation
-
+/* 
         $otherTestUserPersorg = new Persorg();
         $hydratedPersorg = FakeDataFixtures::hydratePersorg($otherTestUserPersorg, 'person');
         $hydratedPersorg->setName($otherTestUser->getUserName());
@@ -339,7 +339,7 @@ class FakeDataFixtures extends Fixture
 
         $manager->persist($otherTestUser);
 
-        $users[] = $otherTestUser; 
+        $users[] = $otherTestUser;  */
 
         // Casual users creation
 

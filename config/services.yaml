@@ -9,12 +9,12 @@ parameters:
     app.contact_phone: "07 76 64 87 58"
 
     # website general contact email adress (ex: contact@website.com)
-    app.general_contact_email: "contact@propon.org"
+    app.general_contact_email: "contact@flycore.org"
 
     # website mailer (ex: mailer@website.com)
-    app.mailer_email: "mailer@propon.org"
+    app.mailer_email: "mailer@flycore.org"
 
-    app.google_map_api_key: AIzaSyByeac-uQWF2vbkmpxGa0ISzV1M4aCrVVk
+    app.google_map_api_key: AIzaSyB7awaCwJGlxyy-vFCKPwcu_1Uq6Crl-3k
 
 services:
     # default configuration for services in *this* file

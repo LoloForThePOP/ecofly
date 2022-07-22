@@ -174,7 +174,7 @@ class LiveSavePP {
     
     /**
     * Check if content to update is valid.
-    * Ex : property : websites; subproperty : url; content : www.propon.org
+    * Ex : property : websites; subproperty : url; content : www.urlexample.org
     */
     public function validateContent(){
 

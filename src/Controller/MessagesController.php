@@ -90,9 +90,9 @@ class MessagesController extends AbstractController
             $entityManager->flush();
 
             $email = (new TemplatedEmail())
-                ->from(new Address($this->getParameter('app.mailer_email'), 'Propon'))
+                ->from(new Address($this->getParameter('app.mailer_email'), 'Flycore'))
                 ->to(new Address($receiver->getEmail()))
-                ->subject('Nouveau message sur Propon')
+                ->subject('Nouveau message sur Flycore')
 
                 // path of the Twig template to render
                 ->htmlTemplate('user/messages/email_got_new_message.html.twig')
@@ -174,9 +174,9 @@ class MessagesController extends AbstractController
                         $receiver->setDataItem("unreadMessagesCount", $unreadMessagesCount+1);
 
                         $email = (new TemplatedEmail())
-                            ->from(new Address($this->getParameter('app.mailer_email'), 'Propon'))
+                            ->from(new Address($this->getParameter('app.mailer_email'), 'Flycore'))
                             ->to(new Address($receiver->getEmail()))
-                            ->subject('Nnouveau message sur Propon')
+                            ->subject('Nnouveau message sur Flycore')
 
                             // path of the Twig template to render
                             ->htmlTemplate('user/messages/email_got_new_message.html.twig')

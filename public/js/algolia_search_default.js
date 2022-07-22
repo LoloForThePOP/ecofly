@@ -173,7 +173,7 @@ $(document).ready(function(){
 
             console.log(e.item);
 
-            content = '<a class="link-wrapper" href="https://www.propon.org/'+e.item.stringId+'" data-id="'+e.item.id+'" target="_blank"><div>';
+            content = '<a class="link-wrapper" href="https://www.flycore.org/'+e.item.stringId+'" data-id="'+e.item.id+'" target="_blank"><div>';
 
             //preparing card's thumbnail
             var imgContent;

@@ -39,6 +39,12 @@ class TechnicController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            if($this->getUser()){ //when user is logged in, we attach technic authorship to this user
+
+                $technic->setCreator($this->getUser());
+
+            }
+
             $manager->persist($technic);
             $manager->flush();
 

@@ -88,7 +88,7 @@ class RegistrationController extends AbstractController
             // send an email to verify user adress
 
             $email = (new TemplatedEmail())
-                ->from (new Address($this->getParameter('app.mailer_email'), 'Propon'))
+                ->from (new Address($this->getParameter('app.mailer_email'), 'Flycore'))
                 ->to(new Address($user->getEmail()))
                 ->subject('Merci de confirmer votre email')
 

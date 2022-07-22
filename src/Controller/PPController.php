@@ -110,7 +110,7 @@ class PPController extends AbstractController
                 
             ];
 
-            $mailer->send($sender, 'Propon', $receiver, "A New Presentation Has Been Created",'/project_presentation/email_webmaster_notif_new_pp.html.twig', $emailParameters);
+            $mailer->send($sender, 'Flycore', $receiver, "A New Presentation Has Been Created",'/project_presentation/email_webmaster_notif_new_pp.html.twig', $emailParameters);
 
             $this->addFlash(
                 'success fs-4',
@@ -777,7 +777,7 @@ class PPController extends AbstractController
                             
                             $receiver = $presentation->getCreator()->getEmail();
                 
-                            $mailer->send($sender, 'Propon', $receiver, "Votre présentation de projet est validée sur Propon.", "Votre présentation a été validée par un membre de notre équipe. Merci pour votre confiance en notre outil. <br>L'équipe Propon.");
+                            $mailer->send($sender, 'Flycore', $receiver, "Votre présentation de projet est validée sur Flycore.", "Votre présentation a été validée par un membre de notre équipe. Merci pour votre confiance en notre outil. <br>L'équipe Flycore.org.");
 
                         }
     

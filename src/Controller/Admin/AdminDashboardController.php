@@ -36,7 +36,7 @@ class AdminDashboardController extends AbstractDashboardController
         return Dashboard::new()
 
         // the name visible to end users
-        ->setTitle('<a href="/">Propon</a>');
+        ->setTitle('<a href="/">Flycore</a>');
     }
 
     

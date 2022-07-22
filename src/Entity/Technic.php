@@ -72,6 +72,11 @@ class Technic
      */
     public $logoFile;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="createdTechnics")
+     */
+    private $Creator;
+
 
 
 
@@ -179,6 +184,18 @@ class Technic
     public function getLogoFile(): ?File
     {
         return $this->logoFile;
+    }
+
+    public function getCreator(): ?User
+    {
+        return $this->Creator;
+    }
+
+    public function setCreator(?User $Creator): self
+    {
+        $this->Creator = $Creator;
+
+        return $this;
     }
 
 

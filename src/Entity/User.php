@@ -120,6 +120,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $createdConversations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Technic::class, mappedBy="Creator")
+     */
+    private $createdTechnics;
+
 
     public function __construct()
     {
@@ -132,6 +137,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         $this->setDataItem("unreadMessagesCount", 0);
         $this->createdConversations = new ArrayCollection();
+        $this->createdTechnics = new ArrayCollection();
 
     }
 
@@ -444,6 +450,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($createdConversation->getAuthorUser() === $this) {
                 $createdConversation->setAuthorUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Technic>
+     */
+    public function getCreatedTechnics(): Collection
+    {
+        return $this->createdTechnics;
+    }
+
+    public function addCreatedTechnic(Technic $createdTechnic): self
+    {
+        if (!$this->createdTechnics->contains($createdTechnic)) {
+            $this->createdTechnics[] = $createdTechnic;
+            $createdTechnic->setCreator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCreatedTechnic(Technic $createdTechnic): self
+    {
+        if ($this->createdTechnics->removeElement($createdTechnic)) {
+            // set the owning side to null (unless already changed)
+            if ($createdTechnic->getCreator() === $this) {
+                $createdTechnic->setCreator(null);
             }
         }
 
