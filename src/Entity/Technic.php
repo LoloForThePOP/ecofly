@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TechnicRepository;
 
@@ -77,13 +79,25 @@ class Technic
      */
     private $Creator;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $pros;
 
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $cons;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isAdminValidated;
 
-
-
-
-
+    /**
+     * @ORM\OneToMany(targetEntity=Slide::class, mappedBy="technicPresentation")
+     */
+    private $slides;
 
 
 
@@ -93,6 +107,8 @@ class Technic
     public function __construct()
     {
         $this->createdAt = new \DateTimeImmutable();
+        $this->isAdminValidated = false;
+        $this->slides = new ArrayCollection();
 
     }
 
@@ -194,6 +210,72 @@ class Technic
     public function setCreator(?User $Creator): self
     {
         $this->Creator = $Creator;
+
+        return $this;
+    }
+
+    public function getPros(): ?string
+    {
+        return $this->pros;
+    }
+
+    public function setPros(?string $pros): self
+    {
+        $this->pros = $pros;
+
+        return $this;
+    }
+
+    public function getCons(): ?string
+    {
+        return $this->cons;
+    }
+
+    public function setCons(?string $cons): self
+    {
+        $this->cons = $cons;
+
+        return $this;
+    }
+
+    public function getIsAdminValidated(): ?bool
+    {
+        return $this->isAdminValidated;
+    }
+
+    public function setIsAdminValidated(?bool $isAdminValidated): self
+    {
+        $this->isAdminValidated = $isAdminValidated;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Slide>
+     */
+    public function getSlides(): Collection
+    {
+        return $this->slides;
+    }
+
+    public function addSlide(Slide $slide): self
+    {
+        if (!$this->slides->contains($slide)) {
+            $this->slides[] = $slide;
+            $slide->setTechnicPresentation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSlide(Slide $slide): self
+    {
+        if ($this->slides->removeElement($slide)) {
+            // set the owning side to null (unless already changed)
+            if ($slide->getTechnicPresentation() === $this) {
+                $slide->setTechnicPresentation(null);
+            }
+        }
 
         return $this;
     }

@@ -6,11 +6,11 @@
 
     <div class="page-container container col-lg-8 px-2">
 
-    <h2>Présenter une technique</h2>
+    <h2 class="mt-md-3 mb-md-4">🛠️ Présenter une technique</h2>
 
         <div class="alert alert-success d-flex align-items-center mt-4" role="alert">
             
-            ✅ Merci de présenter une technique qui rend l'aviation moins carbonée.
+           <span class="fs-5 pb-1 pe-2">🌳 </span> Merci de présenter une technique qui rendrait l'aviation plus durable.
 
         </div>
         
@@ -27,7 +27,7 @@
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
             
             <div>
-                Nous ajouterons des photos / images pour illustrer votre texte.
+                Nous ajouterons des photos ou des images pour illustrer votre contribution.
             </div>
 
         </div>
@@ -56,9 +56,38 @@
 
             </div>
 
-            <button type="submit" class="btn btn-validate mb-2 me-3">Valider</button>
+            <div class="row my-5">
 
-            <a href="{{path('homepage')}}"><button type="button" class="btn btn-go-back mb-2">Retour</button></a>
+                <div class="col-md-6 pe-md-3">
+
+                    <div class="mb-2">
+                        {{ form_label(form.pros) }}
+                    </div>
+
+                    {{ form_errors(form.pros) }}
+
+                    {{ form_widget(form.pros) }}
+
+                </div>
+                
+                <div class="col-md-6 pe-md-2">
+
+                    <div class="mb-2">
+                        {{ form_label(form.cons) }}
+                    </div>
+
+                    {{ form_errors(form.cons) }}
+                    
+                    {{ form_widget(form.cons) }}
+                
+                </div>
+            
+            
+            </div>
+
+            <button type="submit" class="btn btn-validate mb-2 me-3">✔️ Valider</button>
+
+            <a href="{{path('homepage')}}"><button type="button" class="btn btn-go-back mb-2">❌ Annuler</button></a>
 
         {{ form_end(form) }}
 
@@ -112,9 +141,40 @@
             nowrap : false,
 
         });
+        
+        tinymce.init({
+
+            mode : "specific_textareas",
+
+            editor_selector : "tinymceProsCons",
+
+            width : "100%",
+
+            height: "350",
+
+            entity_encoding : "raw",
+
+            menubar: '',
+
+            menu: {}, 
+
+            language: 'fr_FR',
+
+            browser_spellcheck: true,
+
+            plugins: "emoticons, lists",
+
+            toolbar: "undo redo bullist bold emoticons ",
+
+            content_style: "body {padding: 0px 15px;}",
+
+            nowrap : false,
+
+        });
 
 
     </script>
+
 
 
 {% endblock %}

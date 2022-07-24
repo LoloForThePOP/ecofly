@@ -57,7 +57,6 @@ a{
 #flash-messages{
 
     scroll-margin-top: 65px; /* Prevent anchors to be messed up by fixed horizontal navbar */
-
     font-size: 1.14em;
 
 }
@@ -240,19 +239,17 @@ label:active:after {
 
 .btn-validate{
 
-    background-color: #27ae60;
-    color: white;
+    background-color: #e8fcd4;
 }
 
 .btn-validate:hover{
 
-    background-color: #5bb982;
-    color: white;
+    background-color: #80cfa1;
 }
 
 .btn-go-back{
 
-    background-color: #D1EAFB;
+    background-color: #DFF2FF;
 }
 
 .main-container{ /* see base.html */
@@ -260,10 +257,10 @@ label:active:after {
 }
 
 
-/* (test) page container */
+/* page container */
 
 .page-container{
-   padding-top: 40px;
+   padding-top: 65px;
    padding-bottom: 50px;
    min-height: 75vh;
 } 
@@ -278,7 +275,7 @@ label:active:after {
 @media screen and (max-width: 820px) {
 
     .page-container{
-        padding-top: 30px;
+        padding-top: 40px;
     } 
      
 
@@ -311,6 +308,12 @@ label:active:after {
     .notification .btn-close {
 
         padding: 5px;
+    }
+
+
+    .sm-text-center{
+
+        text-align: center;
     }
 
 

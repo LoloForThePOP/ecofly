@@ -2,7 +2,7 @@
 
 <header>
 
-  <nav class="navbar navbar-expand-md fixed-top bg-white pb-0" style="border-bottom: 2px solid orange;">
+  <nav class="navbar navbar-light  navbar-expand-md fixed-top bg-white pb-0" style="border-bottom: 2px solid orange;">
 
     <div class="container-fluid ps-4 ps-md-5">
 
@@ -13,14 +13,12 @@
         <img src="/media/static/images/flycore_logo.svg" alt="flycore logo - a green plane" loading="lazy" width="50px" height="50px"/>
 
       </a>
-    
-    
 
         {% set userAccountMenu %}
 
            {% if app.user %}
 
-           <div class="bg-white">
+           <div class="">
 
             <div class="container d-flex align-items-center justify-content-center text-center my-3">
               {{app.user.userName}}
@@ -34,7 +32,7 @@
   
             <li>
   
-              <a class="dropdown-item" href="{{path ('create_presentation')}}">Ajouter une Technique</a>
+              <a class="dropdown-item" href="{{path ('new_technic')}}">Ajouter une Technique</a>
   
             </li>
   
@@ -91,13 +89,23 @@
       </button>
 
 
-      {# These elements are collapsed and displayed only on small screens #}
+      {# These elements are displyed only on small screens and are collapsed at first #}
       
       <div id="navbarSMToggle" class="collapse navbar-collapse" style="margin-bottom: 7px;">
 
-        <div class="d-md-none">
+        <div class="tiny-screen-menu d-md-none">
 
           {{ userAccountMenu }}
+
+          <style>
+
+            .tiny-screen-menu{
+
+              list-style: none;
+
+            }
+          
+          </style>
 
         </div>
 
@@ -182,8 +190,6 @@
             {# Trigger Button #}
 
             <li class="d-none d-md-block nav-item dropdown rounded">
-
-              
 
               <button id="userAccountDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" class="btn btn-outline-success dropdown-toggle fw-bold" style="padding: 6px 9px; margin-right: 10px;">Compte</button>
 

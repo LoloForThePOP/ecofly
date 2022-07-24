@@ -4,26 +4,130 @@
 
 {% block body %}
 
-    <div class="page-container container col-lg-8 px-2 mt-5">
+    <div class="page-container container col-lg-8 px-0 px-md-2 mt-2 mt-md-5">
 
-        <h2 class="fw-bold mb-4">{{technic.name[:1] | upper ~ technic.name[1:]}}</h2>
+        <div class="row mb-5">
 
-        <div class="ps-md-2">
+            {# Technic Thumbnail if provided #}
 
-            {{technic.textDescription | raw}}
+            {% if technic.logo %}
+
+                <div class="col-4 col-md-3 col-lg-2">
+
+                    <img class="thumbnail rounded img-fluid" src="{{ vich_uploader_asset(technic) }}" alt="Technic Thumbnail">
+                
+                </div>
+            
+            {% endif %}
+
+            {# Technic Name #}
+
+            <div class="col-8 col-md-9 col-lg-10 ps-1 ps-md-3 d-flex align-items-center">
+
+                <h2 class="fw-bold">{{technic.name[:1] | upper ~ technic.name[1:]}}</h2>
+
+            </div>
         
         </div>
 
         
 
+        <div class="ps-md-2 mb-5">
+
+            {{technic.textDescription | raw}}
+        
+        </div>
+
+        <div class="row">
+
+            {% if technic.pros is not empty %}
+            
+                <div class="col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
+
+                    <div class="border rounded p-3 h-100">
+                        
+                        <h4 class="mb-3">👍 Intérêts / avantages</h4>
+
+                        <div class="ps-md-5">
+                        
+                            {{technic.pros | raw}}
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+            {% if technic.cons is not empty %}    
+
+                <div class="col-md-6 p-0">
+
+                    <div class="border rounded p-3 h-100">
+
+                        <h4 class="mb-3">👎 Limites / inconvénients</h4>
+
+                        <div class="ps-md-5">
+                        
+                            {{technic.cons | raw}}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            
+            {% endif %}
+
+
+        
+        </div>
+
+        <div class="my-5">
+
+            {% if is_granted('edit', technic) %}
+
+                <a href="{{ path( 'update_technic', {'id': technic.id} ) }}"><button type="button" class="btn btn-lg btn-light">✏️ Modifier</button></a>
+
+            {% endif %}        
+        
+        
+        </div>
+        
+
         {% if is_granted('ROLE_ADMIN') %}
 
-            {{ form_start(technicLogoForm) }}
+            <div class="my-5">
 
-                {{form_widget(technicLogoForm)}}
-                <button type="submit" class="btn btn-validate mb-2 me-3">Valider</button>
-            {{ form_end(technicLogoForm) }}
-        
+                <h4 class="mb-3">🔑 Actions Admin</h4>
+
+                <div class="border border-primary rounded mb-4 p-3">
+
+                    {{ form_start(technicLogoForm) }}
+
+                    {{form_widget(technicLogoForm)}}
+
+                    <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
+
+                    {{ form_end(technicLogoForm) }}
+
+                </div>
+
+                <div class="border border-primary rounded my-4 p-3">
+
+                    {{ form_start(technicValidationForm) }}
+
+                        {{form_widget(technicValidationForm)}}
+
+                        <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
+
+                    {{ form_end(technicValidationForm) }}
+
+                </div>
+                
+            </div>
+
         
         {% endif %}
 

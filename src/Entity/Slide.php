@@ -75,16 +75,30 @@ class Slide
      */
     private $position;
 
+    
     /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $licence;
+
+    
+
+    /**
+     * A slide can be related to a project presentation
+     * 
      * @ORM\ManyToOne(targetEntity=PPBase::class, inversedBy="slides")
      * @ORM\JoinColumn(onDelete="CASCADE")
      */
     private $presentation;
 
+
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * A slide can be related to a technic presentation
+     *
+     * 
+     * @ORM\ManyToOne(targetEntity=Technic::class, inversedBy="slides")
      */
-    private $licence;
+    private $technicPresentation;
 
 
 
@@ -217,6 +231,18 @@ class Slide
     public function setLicence(?string $licence): self
     {
         $this->licence = $licence;
+
+        return $this;
+    }
+
+    public function getTechnicPresentation(): ?Technic
+    {
+        return $this->technicPresentation;
+    }
+
+    public function setTechnicPresentation(?Technic $technicPresentation): self
+    {
+        $this->technicPresentation = $technicPresentation;
 
         return $this;
     }

@@ -19,7 +19,7 @@
 
 
   
-    {# Displaying registered user presentations #}
+    {# Displaying registered user presentations
 
     {% if app.user %}
 
@@ -27,23 +27,23 @@
 
       {% if user_project_presentations | length > 0 %}
 
-        {{ display.collection("", user_project_presentations | reverse, "user-presentations") }} {# collection title managed in macro #}
+        {{ display.collection("", user_project_presentations | reverse, "user-presentations") }}
 
       {% endif %}
-{# 
+
       {% set user_technic_presentations = app.user.createdPresentations %}
 
       {% if user_project_presentations | length > 0 %}
 
         {{ display.collection("", user_project_presentations | reverse, "user-presentations") }} 
 
-      {% endif %} #}
+      {% endif %}
 
-    {% endif %}
+    {% endif %} #}
 
-     <div id="homepage-jumbotron-struct-container" class="px-0 px-md-4 px-lg-4 container col-xxl-11">
+     <div id="homepage-jumbotron-struct-container" class="container col-xxl-11 px-0 px-md-4 px-lg-4">
 
-        {% include "home/_jumbotron.html.twig" %}
+        {% include "home/_jumbotron.html.twig" with {container_classes: ''} %}
 
         <style>
 
@@ -62,13 +62,13 @@
 
       </div>
 
-      {{ displayTechnics.collection("🛠️ Les Techniques", technics, "", "hide-525") }}
+
+      {#
+
+      {{ displayTechnics.collection("🛠️ Les Techniques", technics | reverse, "", "hide-525") }}
 
 
-      {{ display.collection("🚀 Les Projets", lastInsertedProjects, "", "hide-525") }}
-
-
-
+      {{ display.collection("🚀 Les Projets", lastInsertedProjects, "", "hide-525") }}#}
 
 
   </div> 

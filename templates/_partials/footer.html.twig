@@ -4,7 +4,62 @@
 
     <div class="row">
 
-      .
+      <div class="section col-md-3">
+
+        <h5 class="">Démarrer</h5>
+
+        <ul class="">
+
+          <li class=""><a href="{{path ('homepage')}}">Accueil</a></li>
+
+          <li><a href="{{path ('app_login')}}">Connexion</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="section col-md-3">
+
+        <h5>Le projet flycore.org</h5>
+
+        <ul>
+
+          <li><a href="{{path('static', {'page_name': "about_us",})}}">Rejoignez-nous</a></li>
+
+          <li><a href="{{path('contact_website')}}">Contactez-nous</a></li>
+
+        </ul>
+
+      </div>
+
+      <div class="section col-md-3">
+
+        <h5 class="">Divers</h5>
+
+        <ul class="">
+
+          <li><a href="{{path('static', {'page_name': "credits",})}}">Crédits et remerciements</a></li>
+
+          {# <li>Serveur Discord <a href="https://discord.com/invite/qCPwpN7ETJ">Le Coin des Pilotes</a></li> #}
+
+        </ul>
+
+      </div>
+    
+      <div class="section col-md-3">
+
+        <h5>Mentions légales</h5>
+
+        <ul>
+
+          <li><a href="{{path('static', {'page_name': "terms",})}}">Conditions d'utilisation</a></li>
+
+          <li><a href="{{path ('static', {'page_name': "privacy",})}}">Politique de confidentialité</a></li>
+
+        </ul>
+
+      </div>
+
 
 
     </div>

@@ -10,6 +10,7 @@ use App\Entity\Slide;
 use App\Entity\PPBase;
 use App\Entity\Message;
 use App\Entity\Persorg;
+use App\Entity\Technic;
 use App\Entity\Category;
 use App\Entity\Document;
 use App\Entity\Conversation;
@@ -381,7 +382,6 @@ class FakeDataFixtures extends Fixture
 
         // Project Presentations Creation
 
-        
 
         for ($j = 0; $j < 25; $j++) {
 
@@ -802,117 +802,27 @@ class FakeDataFixtures extends Fixture
             }
 
             
-            // Conversations Creation About This Presentation (private messages)
-
-            if($privateMessagesActivation == true) {
-
-                if ($faker->boolean(70)) {
-
-                    for ($i=0; $i < mt_rand(1,12); $i++) { 
-                        
-                        $conversation = new Conversation();
-
-                        // conversation users
-
-                        $user1 = $presentation->getCreator();
-                        $user2 = $users[array_rand($users)];
-
-                        while ($user2 == $user1) {
-                            $user2 = $users[array_rand($users)];
-                        }
-
-                        $conversation->addUser($user1);
-                        $conversation->addUser($user2);
-
-                        $user2->addConversation($conversation);
-                        $user2->addConversation($conversation);
-
-                        $conversation
-                                    ->setContext($faker->sentence(mt_rand(7,20)))
-                                    ->setAuthorUser($user2)
-                                    ->setPresentation($presentation);
-
-                        $messagesCount = mt_rand(1,12);
-
-                        $conversationUsers=[$user1, $user2];
-
-                        for ($i=0; $i <= $messagesCount; $i++) { 
-                            
-                            $message = new Message();
-
-                            $author = $conversationUsers[array_rand($conversationUsers)];
-
-                            $content = $faker->boolean(50) ? $faker->paragraph(mt_rand(1,2)) : $faker->paragraphs(mt_rand(1,3), true);
-
-                            $message->setAuthorUser($author)
-                                    ->setContent($content)
-                                    ->setConversation($conversation)
-                                    ->setType("between_users")
-                                    ->setIsConsulted(true);
-
-                            $conversation->setCacheItem("lastMessIsConsulted", true);
-
-                            // sometimes last message is not consulted
-                                    
-                            if ($i == $messagesCount && $faker->boolean(80)) {
-
-                                $message->setIsConsulted(false);
-                                $conversation->setCacheItem("lastMessIsConsulted", false);
-
-                                    // update receiver unread messages count
-
-                                    foreach ($conversation->getUsers() as $participant) {
-                                        if ($message->getAuthorUser() != $participant) {
-    
-                                            $unreadMessagesCount= $participant->getDataItem("unreadMessagesCount");
-    
-                                            $participant->setDataItem("unreadMessagesCount", $unreadMessagesCount+1);
-                                        }
-                                    }
-
-                            }
-
-                            $manager->persist($message);
-
-                            $conversation->addMessage($message);
-
-                        }
-
-                        $manager->persist($conversation);
-
-                    }
-
-                }
-                
-            }
 
             $manager->persist($presentation);
 
         }
 
-        // End of Project Presentation Creation
 
-        // update users unread messages count
+        // Technics Creation
+        
+        for ($k = 0; $k < 12; $k++) {
 
-    /*     foreach ($users as $user) {
+            $technic = new Technic ();
 
-            $unreadMessagesCount=0;
-            
-            foreach ($user->getConversations() as $conversation) {
+            $technic->setName($faker->sentence())
+                    ->setTextDescription($faker->paragraphs(2, true))
+                    ->setPros($faker->paragraphs(3, true))
+                    ->setCons($faker->paragraphs(3, true));
 
-                foreach ($conversation->getMessages() as $message) {
-                    
-                    if ($message->getAuthorUser() != $user && $message->getIsConsulted()==false) {
-                        
-                        $unreadMessagesCount ++;
-                    }
-                }
-            }
+            $manager->persist($technic);
 
-            $user->setDataItem("unreadMessagesCount", $unreadMessagesCount);
         }
- */
-
+        
 
         $manager->flush();
 

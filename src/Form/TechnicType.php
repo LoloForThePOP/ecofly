@@ -19,10 +19,10 @@ class TechnicType extends AbstractType
                 'name', 
                 TextType::class,
                 [
-                    'label' => 'Donner un titre à la technique',
+                    'label' => 'Quel est le nom de la technique ?',
                     'attr' => [
                         
-                        'placeholder'    => 'Écrire ici',
+                        'placeholder'    => 'Exemple : carburants synthétiques',
                     ],
 
                     'required'   => true,
@@ -33,11 +33,37 @@ class TechnicType extends AbstractType
                 'textDescription',
                 TextareaType::class,
                 [
-                    'label' => 'Décrire la technique en quelques paragraphes',
+                    'label' => 'Décrire la technique en quelques mots ou paragraphes',
                     'required'     => false,
                     'sanitize_html' => true,
                     'attr' => [
                         'class' => "tinymce",
+                    ],
+                ]
+            )
+
+            ->add(
+                'pros',
+                TextareaType::class,
+                [
+                    'label' => '🙂 intérêts / avantages de la technique ?',
+                    'required'     => false,
+                    'sanitize_html' => true,
+                    'attr' => [
+                        'class' => "tinymceProsCons",
+                    ],
+                ]
+            )
+
+            ->add(
+                'cons',
+                TextareaType::class,
+                [
+                    'label' => '🤔 limites / inconvénients  de la technique ?',
+                    'required'     => false,
+                    'sanitize_html' => true,
+                    'attr' => [
+                        'class' => "tinymceProsCons",
                     ],
                 ]
             );
