@@ -10,7 +10,7 @@
 
 		{% block editButtons %}
 
-			{% if countSlides <= constant('MAX_SLIDES', presentation) %}
+			{# {% if countSlides <= constant('MAX_SLIDES', presentation) %}{% endif %} #}
 			
 				{# Add an image button (triggers a modal with a form) #}
 			
@@ -24,8 +24,6 @@
 					<button class="pp-edition-mode btn btn-light btn-sm me-3">+ Video</button>
 
 				</a>
-
-			{% endif %}
 
 			{% if countSlides > 1 %}
 

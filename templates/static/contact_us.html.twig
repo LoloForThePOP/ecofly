@@ -6,41 +6,57 @@
 
     <div class="container page-container col-md-9 col-lg-6 px-0">
 
-        <h2 class="sm-text-center fw-bold mb-4" style="color: green;">Contactez-nous</h2>
 
-        <p class="mb-4">
-            Pour toute demande, problème, ou suggestion, vous pouvez :
-        </p>
-
-        <ul>
-
-            <li class="lh-sm mb-2"> appeler le <a href="tel:{{contactUsPhone}}">{{contactUsPhone}}</a> (appel non surtaxé)</li>
-            <li>ou utiliser le formulaire ci-dessous</li>
+        <div class="mb-4">
         
-        </ul>
+            <h2 class="sm-text-center fw-bold mb-4" style="color: green;">Contactez-nous</h2>
 
-        <p>
-            Nous vous recontacterons dans les plus brefs délais.
-        </p>
+            <p class="mb-4">
+                Pour toute demande, problème, ou suggestion, vous pouvez :
+            </p>
+
+            <ul>
+
+                <li class="lh-sm mb-2"> appeler le <a href="tel:{{contactUsPhone}}">{{contactUsPhone}}</a> (appel non surtaxé)</li>
+                <li>ou utiliser le formulaire ci-dessous</li>
+            
+            </ul>
+
+            <p>
+                Nous vous recontacterons dans les plus brefs délais.
+            </p>
+        
+        </div>
 
         <div class="contact-form row mb-4 ">
 
             {{form_start(form)}}
 
-            {{form_widget(form)}}
+            <div class="mb-3">
+
+                <div class="sm-text-center">{{form_label(form.authorEmail)}}</div>
+                {{form_errors(form.authorEmail)}}
+                {{form_widget(form.authorEmail)}}
+            
+            </div>
+
+
+            <div class="sm-text-center">{{form_label(form.content)}}</div>
+            {{form_errors(form.content)}}
+            {{form_widget(form.content)}}
 
         </div>
 
         <!-- Actions Buttons -->
 
-        <div class="d-flex justify-content-evenly">
+        <div class="d-flex justify-content-evenly justify-content-md-start">
 
-            <button type="submit" value="" class="btn btn-validate ">
+            <button type="submit" value="" class="btn btn-validate me-3">
                 <span class="">✔️ Envoyer</span> 
             </button>
 
             <a href="{{path('homepage')}}">
-                <button type="button" value="" class="btn btn-go-back mb-2">
+                <button type="button" value="" class="btn btn-go-back">
                     <span class="">❌ Annuler</span> 
                 </button>
             </a>

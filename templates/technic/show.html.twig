@@ -4,7 +4,7 @@
 
 {% block body %}
 
-    <div class="page-container container col-lg-8 px-0 px-md-2 mt-2 mt-md-5">
+    <div class="page-container container col-lg-8 px-0 px-md-2">
 
         <div class="row mb-5">
 
@@ -28,6 +28,18 @@
 
             </div>
         
+        </div>
+
+
+        {% set userPresenter = true %}
+
+        {% set countSlides = technic.slides | length %}
+
+
+        <div id="slideshow-struct-container" class="pp-struct-container col-lg-6">
+                
+            {% include 'project_presentation/_show/slides/slides.html.twig' with {'presentation': technic} %}
+
         </div>
 
         
