@@ -18,7 +18,7 @@
     position: relative;
     height: 400px;
 
-    align-items: center; /* Note : flex display is set in Slideshow Javascript */
+    align-items: center; /* Note : display:flex is declared in Slideshow Javascript */
     justify-content: center;
 }
 

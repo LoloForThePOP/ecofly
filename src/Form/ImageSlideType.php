@@ -31,7 +31,7 @@ class ImageSlideType extends AbstractType
                 'caption',
                 TextType::class,
                 [
-                    'label' => "Légende / Titre (facultatif) pour cette image",
+                    'label' => "Légende ou titre pour cette image (facultatif)",
 
                     'attr' => [
 

@@ -251,8 +251,8 @@ class TechnicController extends AbstractController
 
             return $this->render('technic/show.html.twig', [
                 'technic' => $technic,
-                "imageSlideForm" => $addImageForm->createView(),
-                "videoSlideForm" => $addVideoForm->createView(),
+                "addImageForm" => $addImageForm->createView(),
+                "addVideoForm" => $addVideoForm->createView(),
                 "technicLogoForm" => $technicLogoForm->createView(),
                 "technicValidationForm" => $technicValidationform->createView(),
             ]);

@@ -14,7 +14,7 @@ It contains :
 
     <div class="pp-struct-title-container {{additionalClasses ?? ""}}"> {# editionMode is empty or pp-consultation-mode #}
 
-        <h3 class="pp-struct-title">
+        <div class="pp-struct-title">
             
             {% block icon %}
 
@@ -30,7 +30,7 @@ It contains :
 
             {% endblock %}
 
-            {% block title %}<span class="me-2">{{title}}</span>{% endblock %}
+            {% block title %}<h3 class="me-3">{{title}}</h3>{% endblock %}
 
             {% if userPresenter %}
 
@@ -50,7 +50,7 @@ It contains :
                     
             {% endif %}
 
-        </h3>
+        </div>
 
     </div>
 

@@ -1,0 +1,40 @@
+
+
+/* Switch Between Edition Mode and Consultation Mode Button */
+
+#pp-switch-edit-consult-mode {
+    position: fixed; /* Fixed/sticky position */
+    top: 440px; /* Place the button at the bottom of the page */
+    right: 25px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; 
+    outline: none; /* Remove outline */
+    background-color: #d6f0ca; 
+    
+    cursor: pointer; 
+    padding: 16px; 
+    border-radius: 50%; 
+    
+}
+
+
+
+/* Toggling some elements display */
+
+.in-edition-mode .pp-consultation-mode{
+    display: none !important;
+}
+
+
+.in-consultation-mode .pp-edition-mode{
+    display: none !important;
+}
+
+.in-edition-mode .pp-edition-mode{
+    display: initial;
+}
+
+.in-consultation-mode .pp-consultation-mode{
+    display: initial;
+}
+

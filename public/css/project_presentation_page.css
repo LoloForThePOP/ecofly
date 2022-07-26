@@ -40,7 +40,9 @@
 
 .pp-struct-title{
 
-    display: inline;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     color : navy;
     font-family : Verdana, Geneva, Tahoma, sans-serif; 
     font-size: 1.8rem;

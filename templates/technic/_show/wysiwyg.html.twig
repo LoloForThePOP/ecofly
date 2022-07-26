@@ -1,0 +1,49 @@
+<script>
+    
+    // this script should be called only for user presenters
+    
+    // hiding or showing items : see wysisyg.css and a few declaration in project_presentation_page.css
+    
+    $(document).ready(function(){
+            
+        // make delete item icons appear when clicking on a trash icon        
+    
+        $(".show-delete-items-buttons").click(function() {
+
+            var scope = $(this).closest('.pp-struct-container').find('.delete-button');
+
+            if ($(this).hasClass("inactivated")){
+
+                scope.css('visibility', 'visible').css('opacity', '1');
+
+            }
+
+            else {
+
+                scope.css('visibility', 'hidden').css('opacity', '0');
+
+            }
+
+            $(this).toggleClass("inactivated activated");
+            
+        });
+
+        // switching between edition mode and consultation mode
+            
+        $( "#pp-switch-edit-consult-mode" ).click(function() {
+
+        
+            // toggling "switch display mode" button status
+
+            $(this).toggleClass("edition-mode consultation-mode");
+
+            // toggling whole presentation container status
+
+            $(".tp-container").toggleClass("in-edition-mode in-consultation-mode");
+
+        });
+
+    });
+
+
+</script>

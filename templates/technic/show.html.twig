@@ -1,10 +1,26 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+
+    <link href="/css/technic_presentation_page.css" rel="stylesheet">
+
+    
+    {% if is_granted('ROLE_ADMIN') %}
+
+        <link href="/css/technic_wysiwyg.css" rel="stylesheet">
+
+    {% endif %}
+
+
+{% endblock %}
+
 {% block name %}Ajouter une Méthode{% endblock %}
 
 {% block body %}
 
-    <div class="page-container container col-lg-8 px-0 px-md-2">
+    {% set userPresenter = true %}
+
+    <div class=" {{userPresenter ? 'in-edition-mode'}} tp-container page-container container col-lg-11 col-xxl-9 px-0 pb-5">
 
         <div class="row mb-5">
 
@@ -30,23 +46,131 @@
         
         </div>
 
-
-        {% set userPresenter = true %}
-
         {% set countSlides = technic.slides | length %}
 
 
-        <div id="slideshow-struct-container" class="pp-struct-container col-lg-6">
-                
-            {% include 'project_presentation/_show/slides/slides.html.twig' with {'presentation': technic} %}
+        <div class="row mb-5">
 
-        </div>
+            {% if userPresenter %}
 
-        
+                <div class="pp-edition-mode d-flex align-items-center mb-3">
 
-        <div class="ps-md-2 mb-5">
+                    <img 
+                    
+                        src= "{{ asset( 'slideshow.svg', 'pp_consult') }}"
+                        class= "pp-struct-icon"  
+                        height= "27" 
+                        width= "27" 
+                        alt= "slideshow icon"
+                        
+                    >
 
-            {{technic.textDescription | raw}}
+                    <h3 class="lh-1 m-0 mb-1 me-3">Diaporama</h3>
+
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#addImageSlideFormModal"
+				    class="pp-edition-mode btn btn-light btn-sm me-3">+ Image</button>
+
+                    <button type="button" data-bs-toggle="modal" data-bs-target="#addVideoSlideFormModal" class="pp-edition-mode btn btn-light btn-sm me-3">+ Video</button>
+
+                    <button type="button" class="pp-edition-mode show-delete-items-buttons inactivated btn btn-light btn-sm me-3" aria-label="Show delete element buttons">
+
+                        <img src="{{ asset('trash.svg', 'pp_wysiwyg')}}"  alt="trash icon"> <span class="fw-bold">...</span>
+
+                    </button>
+
+                </div>
+            
+            {% endif %}
+
+            {% if countSlides > 0 %}
+
+                {% set slides = technic.slides %}
+            
+                <div class="col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
+
+                    <div class="border rounded p-3 h-100">
+
+                        <div id="slideshowTechnics" class="carousel slide" data-bs-interval="false">
+
+                            <div class="carousel-inner">
+
+                                {% for slide in slides %}
+
+                                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+
+                                        <img src="{{ vich_uploader_asset(slide) }}" class="d-block" alt="Image illustrating a technic to reduce airplane gas emissions">
+
+                                    </div>
+                                    
+                                {% endfor %}
+
+
+                                <style>
+
+                                    .carousel-item{
+
+
+                                        height: 350px;
+                                        position: relative;
+
+                                    }
+
+                                    .carousel-item img { /* vertically center image */
+                                        max-height: 100%;
+                                        max-width: 100%;
+                                        width: auto;
+                                        height: auto;
+                                        position: absolute;
+                                        top: 0;
+                                        bottom: 0;
+                                        left: 0;
+                                        right: 0;
+                                        margin: auto;
+                                        border-radius: 3px;
+                                    }
+                                    
+                                  
+                                </style>
+
+                            </div>
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+
+                            <button class="carousel-control-next" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+
+                        </div>
+                    
+                    </div>
+
+                </div>
+
+            {% endif %}
+
+            {% if technic.textDescription is not empty %}    
+
+                <div class="col-md-6 p-0">
+
+                    <div class="border rounded p-3 h-100 d-flex align-items-center">
+
+                        <div class="ps-md-2">
+                        
+                            {{technic.textDescription | raw}}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            
+            {% endif %}
+
+
         
         </div>
 
@@ -54,13 +178,13 @@
 
             {% if technic.pros is not empty %}
             
-                <div class="col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
+                <div class="pros col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
 
-                    <div class="border rounded p-3 h-100">
+                    <div class="border rounded p-3 pb-1 h-100">
                         
                         <h4 class="mb-3">👍 Intérêts / avantages</h4>
 
-                        <div class="ps-md-5">
+                        <div class="ps-md-3">
                         
                             {{technic.pros | raw}}
 
@@ -74,13 +198,13 @@
 
             {% if technic.cons is not empty %}    
 
-                <div class="col-md-6 p-0">
+                <div class="cons col-md-6 p-0">
 
-                    <div class="border rounded p-3 h-100">
+                    <div class="border rounded p-3 pb-1 h-100">
 
                         <h4 class="mb-3">👎 Limites / inconvénients</h4>
 
-                        <div class="ps-md-5">
+                        <div class="ps-md-3">
                         
                             {{technic.cons | raw}}
 
@@ -92,56 +216,100 @@
             
             {% endif %}
 
+            <style>
+
+                .pros li:not(:last-child), .cons li:not(:last-child) {
+
+                    margin-bottom : 10px;
+
+                }
+            
+            
+            </style>
 
         
         </div>
 
-        <div class="my-5">
 
+
+        {% if userPresenter %}
+            
+            {# Switch Between Edition Mode and Consultation Mode Button #}
+
+            <button id="pp-switch-edit-consult-mode" class="edition-mode" title="Switch between edition mode and consultation mode">
+
+                <img id="pp-consult-icon" class="pp-edition-mode" src="{{ asset('eye.svg', 'pp_wysiwyg')}}" height="30" width="30"  alt="eye icon">
+
+                <img id="pp-edit-icon" class="pp-consultation-mode" src="{{ asset('pen.svg', 'pp_wysiwyg')}}" height="30" width="30"  alt="pen icon">
+
+            </button>
+        
+        {% endif %}
+
+        
+             
+
+
+        <div class="pp-edition-mode">
+        
             {% if is_granted('edit', technic) %}
 
-                <a href="{{ path( 'update_technic', {'id': technic.id} ) }}"><button type="button" class="btn btn-lg btn-light">✏️ Modifier</button></a>
+                {% include "technic/_show/wysiwyg.html.twig" %}
+                
+                <div class="my-5">
 
-            {% endif %}        
-        
-        
-        </div>
-        
-
-        {% if is_granted('ROLE_ADMIN') %}
-
-            <div class="my-5">
-
-                <h4 class="mb-3">🔑 Actions Admin</h4>
-
-                <div class="border border-primary rounded mb-4 p-3">
-
-                    {{ form_start(technicLogoForm) }}
-
-                    {{form_widget(technicLogoForm)}}
-
-                    <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
-
-                    {{ form_end(technicLogoForm) }}
-
+                    <a href="{{ path( 'update_technic', {'id': technic.id} ) }}"><button type="button" class="btn btn-lg btn-light">✏️ Modifier</button></a>
+            
                 </div>
+                
+            {% endif %}        
 
-                <div class="border border-primary rounded my-4 p-3">
+            {% if is_granted('ROLE_ADMIN') %}
 
-                    {{ form_start(technicValidationForm) }}
+                <div class="my-5">
 
-                        {{form_widget(technicValidationForm)}}
+                    <h4 class="mb-3">🔑 Actions Admin</h4>
+
+                    <div class="border border-primary rounded mb-4 p-3">
+
+                        {{ form_start(technicLogoForm) }}
+
+                        {{form_widget(technicLogoForm)}}
 
                         <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
 
-                    {{ form_end(technicValidationForm) }}
+                        {{ form_end(technicLogoForm) }}
 
+                    </div>
+
+                    <div class="border border-primary rounded my-4 p-3">
+
+                        {{ form_start(technicValidationForm) }}
+
+                            {{form_widget(technicValidationForm)}}
+
+                            <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
+
+                        {{ form_end(technicValidationForm) }}
+
+                    </div>
+                    
                 </div>
-                
-            </div>
 
-        
-        {% endif %}
+
+                {# Forms inclusions #}
+
+                {% include "project_presentation/edit/slides/add_image_form.html.twig" with {'form': addImageForm} %}
+
+                {% include "project_presentation/edit/slides/add_video_form.html.twig" with {'form': addVideoForm} %}
+
+
+
+            
+            {% endif %}    
+
+        </div>
+      
 
     </div>
 

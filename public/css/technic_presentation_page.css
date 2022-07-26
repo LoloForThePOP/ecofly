@@ -1,0 +1,61 @@
+
+/* Each Structure Icon */
+
+.pp-struct-icon{
+    
+    margin-right : 7px;
+
+    width: 22px;
+    height: 22px; 
+
+    /* change an svg color : 
+    
+    filter: invert(73%) sepia(92%) saturate(2564%) hue-rotate(8deg) brightness(112%) contrast(104%); */
+}
+
+/* Bootstrap Caroussel Controls */
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+
+	height: 3rem;
+	background-color: black;
+	border-radius: 22px;
+}
+
+
+ @media screen and (min-width: 992px) {
+
+
+ }
+
+
+
+@media screen and (max-width: 768px) {
+
+       
+
+}
+
+@media screen and (max-width: 580px) {
+
+    .pp-struct-title{
+
+        color : navy;
+        font-family : Verdana, Geneva, Tahoma, sans-serif;
+
+        font-size: 20px;
+
+    }
+
+    .pp-struct-icon{
+
+        width:20px;
+        height:20px;
+
+        margin-right:5px;
+
+    }
+
+
+
+}

@@ -28,7 +28,7 @@ class VideoSlideType extends AbstractType
                 'caption',
                 TextType::class,
                 [
-                    'label' => "Légende / Titre (facultatif) pour cette vidéo",
+                    'label' => "Légende ou titre pour cette vidéo (facultatif)",
 
                     'attr' => [
 
