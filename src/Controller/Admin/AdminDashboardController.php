@@ -4,7 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\User;
 use App\Entity\PPBase;
-use App\Controller\Admin\PPBaseCrudController;
+use App\Entity\Technic;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
@@ -49,6 +49,7 @@ class AdminDashboardController extends AbstractDashboardController
     
     {
         yield MenuItem::linkToCrud('Projets', 'fas fa-list', PPBase::class);
+        yield MenuItem::linkToCrud('Techniques', 'fas fa-list', Technic::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToLogout('Se déconnecter', 'fa fa-exit');
     }

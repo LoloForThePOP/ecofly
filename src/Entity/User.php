@@ -121,9 +121,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $createdConversations;
 
     /**
-     * @ORM\OneToMany(targetEntity=Technic::class, mappedBy="Creator")
+     * @ORM\OneToMany(targetEntity=Technic::class, mappedBy="creator")
      */
     private $createdTechnics;
+
 
 
     public function __construct()
@@ -138,6 +139,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->setDataItem("unreadMessagesCount", 0);
         $this->createdConversations = new ArrayCollection();
         $this->createdTechnics = new ArrayCollection();
+        $this->technics = new ArrayCollection();
 
     }
 
@@ -485,6 +487,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+   
+
 
     
 

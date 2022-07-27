@@ -288,6 +288,12 @@ label:active:after {
     .page-container{
         padding-top: 40px;
     } 
+
+    
+    .md-text-center{
+
+        text-align: center;
+    }
      
 
 }

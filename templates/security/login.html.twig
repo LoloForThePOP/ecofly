@@ -10,17 +10,18 @@
 
     <div class="row">
 
-        <div class="mx-auto col-md-7 col-lg-5">
+        <div class="mx-auto col-md-8 col-lg-5">
 
-            <div class="py-3 px-md-3">
+            <div class="py-3 py-lg-0 px-md-3">
 
-                <h3 class="fw-bold mb-4">Merci de vous connecter pour participer au site :</h3>
+                <h3 class="fw-bold mb-0 text-center">Pour participer au site</h3>
+                <h3 class="fw-bold mb-4 text-center">Merci de vous connecter</h3>
 
-                <div class="container mb-4 pb-3 px-0">
+                <div class="container mb-4 pb-3 px-0 text-center">
 
                     <a href="{{ path('connect_google_start') }}">
 
-                        <button class="btn btn-outline-dark me-3 mb-2 mb-md-0">
+                        <button class="connect-btn btn btn-outline-dark me-0 me-md-3 mb-3 mb-md-0">
 
                             <img src="{{asset ('connect/google.svg', 'misc')}}" class="" alt="Google Logo" loading="lazy" width="50" height="50">
 
@@ -32,7 +33,7 @@
 
                     <a href="{{ path('connect_facebook_start') }}">
 
-                        <button class="btn btn-outline-dark">
+                        <button class="connect-btn btn btn-outline-dark">
 
                             <img src="{{asset ('connect/facebook.svg', 'misc')}}" class="" alt="Facebook Logo" loading="lazy" width="50" height="50">
 
@@ -43,11 +44,24 @@
                     </a>
 
 
+                    <style>
+
+                        .connect-btn{
+
+                            width: 190px;
+
+
+                        }
+                    
+                    
+                    </style>
+
+
                 </div>
 
-                <div class="container px-0 mb-3">
+                <div class="container px-0 mb-3 text-center">
 
-                    <h5 class="fw-bold">Ou utilisez votre adresse e-mail :</h5>
+                    <h5 class="fw-bold">Ou utilisez votre adresse e-mail</h5>
 
                 </div>
 
@@ -94,7 +108,7 @@
 
                     <!-- "Remember Me" Check-Box -->
 
-                    <div class="mb-4">
+                    <div class="mb-4 text-center">
 
                         <input class="me-2" type="checkbox" id="remember_me" name="_remember_me" checked />
                         <label for="remember_me">Se souvenir de moi</label>
@@ -104,7 +118,7 @@
                    
                     <!-- Action Buttons -->
 
-                    <div class="form-group">
+                    <div class="form-group text-center">
 
                         <!-- Login button -->
 
@@ -123,7 +137,7 @@
                 </form>
 
 
-                <div id="login-other-choices" class="mt-4">
+                <div id="login-other-choices" class="mt-4 text-center">
 
                     <!-- New account access button -->
 

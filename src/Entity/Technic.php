@@ -74,10 +74,7 @@ class Technic
      */
     public $logoFile;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="createdTechnics")
-     */
-    private $Creator;
+  
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -98,6 +95,11 @@ class Technic
      * @ORM\OneToMany(targetEntity=Slide::class, mappedBy="technicPresentation")
      */
     private $slides;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="technics")
+     */
+    private $creator;
 
 
 
@@ -202,17 +204,8 @@ class Technic
         return $this->logoFile;
     }
 
-    public function getCreator(): ?User
-    {
-        return $this->Creator;
-    }
+  
 
-    public function setCreator(?User $Creator): self
-    {
-        $this->Creator = $Creator;
-
-        return $this;
-    }
 
     public function getPros(): ?string
     {
@@ -276,6 +269,18 @@ class Technic
                 $slide->setTechnicPresentation(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCreator(): ?User
+    {
+        return $this->creator;
+    }
+
+    public function setCreator(?User $creator): self
+    {
+        $this->creator = $creator;
 
         return $this;
     }
