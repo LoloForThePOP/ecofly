@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\User;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\Field;
 use EasyCorp\Bundle\EasyAdminBundle\Field\FormField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
@@ -14,7 +15,14 @@ class UserCrudController extends AbstractCrudController
     {
         return User::class;
     }
+    
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->setDefaultSort(['id' => 'DESC'])
 
+        ;
+    }
     
     public function configureFields(string $pageName): iterable
     {

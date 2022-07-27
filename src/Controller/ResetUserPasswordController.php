@@ -68,7 +68,7 @@ class ResetUserPasswordController extends AbstractController
             $email = (new TemplatedEmail())
                 ->from($this->getParameter('app.mailer_email'))
                 ->to(new Address($user->getEmail()))
-                ->subject('Réinitialisation Mot de Passe - Projet des Projets')
+                ->subject('Réinitialisation Mot de Passe - Flycore')
 
                 // path of the Twig template to render
                 ->htmlTemplate('reset_user_password/email_confirm_token.html.twig')
