@@ -3,7 +3,9 @@
 {% block title %}Flycore{% endblock %}
 
 {% block stylesheets %}
-  <link href="/css/titled_projects_collection.css" rel="stylesheet">
+  <link href="/css/titled_collection.css" rel="stylesheet">
+  <link href="/css/project_card.css" rel="stylesheet">
+  <link href="/css/technic_card.css" rel="stylesheet">
   <link href="/css/show_more_less_button.css" rel="stylesheet">
 {% endblock %}
 
@@ -67,12 +69,14 @@
     {% endif %}
 
 
-    
+
+    <div class="container col-lg-12 col-xxl-9 px-md-0">
 
       {{ displayTechnics.collection("Galerie des Techniques", technics | reverse, "", "hide-525") }}
+    
+    </div>
 
-
-      {{ display.collection("Galerie des Projets", lastInsertedProjects, "", "hide-525") }}
+    {{ display.collection("Galerie des Projets", lastInsertedProjects, "", "hide-525") }}
 
 
   </div> 

@@ -46,6 +46,12 @@
 
                 <h2 class="fw-bold">{{technic.name[:1] | upper ~ technic.name[1:]}}</h2>
 
+                {% if isCreator or isAdmin %}
+
+                    <a href="{{ path( 'update_technic', {'id': technic.id} ) }}" class="ms-3">Modifier</a>
+                
+                {% endif %}
+
             </div>
         
         </div>

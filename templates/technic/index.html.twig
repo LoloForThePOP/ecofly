@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}<link href="/css/titled_collection.css" rel="stylesheet">{% endblock %}
+
+
+{% block name %}Galerie des techniques{% endblock %}
+
+{% block body %}
+
+    <div class="page-container container col-lg-9 col-xxl-8 px-2">
+
+        <h2 class="text-center fw-bold mt-4 mt-md-3 mb-md-5">Galerie des Techniques</h2>
+
+        {% import "utilities/_macro_titled_technics_collection.html.twig" as displayTechnics %} {# technic presentation cards #}
+
+        {{ displayTechnics.collection("", technics | reverse) }} 
+
+    </div>
+
+{% endblock %}

@@ -1,12 +1,57 @@
 
+.technic-card{
+
+    width : 210px;
+    height : 220px;
+}
+
+
 .technic-card:hover{
 
-    background-color: rgb(249, 249, 255);
-    border-radius: 3px;
+    box-shadow: 1px 1px 5px 1px rgb(238, 237, 237);
+    border-radius: 3pxrgb(251, 251, 251)
+}
+
+
+
+.technic-card .image-container{
+
+    height: 140px;
+    padding: 10px 10px 10px 10px;
+
+}
+
+.technic-card .image-container img{
+
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 4px;
+
+}
+
+.other-info-container{
+
+    padding: 0 5px 10px 5px;
+    text-align: center;
+
 }
 
 .name{
     
-    font-weight:bold;
+    font-weight: bold;
+
+}
+
+
+
+
+@media screen and (max-width: 580px) {
+
+    .technic-card{
+
+        height: 230px;
+        margin-right : 20px;
+    }
+
 
 }

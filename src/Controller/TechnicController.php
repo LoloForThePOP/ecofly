@@ -11,6 +11,7 @@ use App\Form\VideoSlideType;
 use App\Form\TechnicLogoType;
 use App\Service\ImageResizer;
 use App\Form\TechnicValidationType;
+use App\Repository\TechnicRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -263,6 +264,22 @@ class TechnicController extends AbstractController
 
     }
 
+
+
+    /**
+     * @Route("/technic/index", name="index_technics")
+     */
+    public function index(TechnicRepository $techRepo): Response
+    {
+
+        $technics = $techRepo->findAll();
+
+
+        return $this->render('technic/index.html.twig', [
+            'technics' => $technics,
+        ]);
+
+    }
 
 
 
