@@ -121,9 +121,9 @@ class Persorg implements \Serializable
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      *  @Assert\Image(
-     *     maxSize = "1500k",
-     *     maxSizeMessage = "Poids maximal Accepté pour l'image : 1500 k",
-     *     mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/gif"},
+     *     maxSize = "2500k",
+     *     maxSizeMessage = "Poids maximal Accepté pour l'image : {{ limit }} {{ suffix }}",
+     *     mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/webp", "image/svg+xml"},
      *     mimeTypesMessage = "Le format de fichier ({{ type }}) n'est pas encore pris en compte. Les formats acceptés sont : {{ types }}"
      * )
      * @Vich\UploadableField(mapping="persorg_image", fileNameProperty="image")

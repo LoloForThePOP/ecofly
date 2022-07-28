@@ -66,7 +66,7 @@ class Technic implements Serializable
      * 
      *  @Assert\Image(
      *     maxSize = "2500k",
-     *     maxSizeMessage = "Poids maximal Accepté pour l'image : 1500 k",
+     *     maxSizeMessage = "Poids maximal Accepté pour l'image : 2500 k",
      *     mimeTypes={"image/png", "image/jpeg", "image/jpg", "image/webp", "image/svg+xml"},
      *     mimeTypesMessage = "Pour ajouter un logo, le format de fichier ({{ type }}) n'est pas encore pris en compte. Les formats acceptés sont : {{ types }}"
      * )

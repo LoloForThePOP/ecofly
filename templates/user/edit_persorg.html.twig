@@ -24,6 +24,7 @@
 
                         <h4 class="fw-bold h5 mb-4">Votre nom d'utilisateur (ou celui de l'organisation que vous représentez)</h4>
 
+                        {{ form_errors(persorgForm.name) }}
                         {{ form_widget(persorgForm.name) }}
 
                     </div>
@@ -38,12 +39,13 @@
 
                         {% if userPersorg.image is not empty %}
 
-                            <img class="img-fluid mb-5" src="{{ vich_uploader_asset(app.user.persorg)  | imagine_filter('persorg_thumbnail_sm') }}" width="90" height="90">
+                            <img class="img-fluid mb-4" src="{{ vich_uploader_asset(app.user.persorg) }}" style="max-width: 90px; max-height: 90px;">
 
                             <h5 class="mt-2 mb-3 font-weight-bold">Modifier l'image</h5>
 
                         {% endif %}
                             
+                        {{ form_errors(persorgForm.imageFile) }}
                         {{ form_widget(persorgForm.imageFile) }}
                                             
 
@@ -53,6 +55,7 @@
 
                         <h4 class="fw-bold h5 mb-4">Une description de vous ou de votre organisation</h4>
 
+                        {{ form_errors(persorgForm.description) }}
                         {{ form_widget(persorgForm.description) }}
 
                     </div>
@@ -61,6 +64,7 @@
 
                         <h4 class="fw-bold h5 mb-4">Site web ou réseau social </h4>
 
+                        {{ form_errors(persorgForm.website1) }}
                         {{ form_widget(persorgForm.website1) }}
 
                     </div>
@@ -86,6 +90,7 @@
 
                                 <h4 class="fw-bold h5 mb-4">Site web ou réseau social 2 </h4>
         
+                                {{ form_errors(persorgForm.website2) }}
                                 {{ form_widget(persorgForm.website2) }}
         
                             </div>
@@ -94,6 +99,7 @@
         
                                 <h4 class="fw-bold h5">Site web ou réseau social 3 </h4>
         
+                                {{ form_errors(persorgForm.website3) }}
                                 {{ form_widget(persorgForm.website3) }}
         
                             </div>
@@ -102,6 +108,7 @@
         
                                 <h4 class="fw-bold h5">Site web ou réseau social 4 </h4>
         
+                                {{ form_errors(persorgForm.website4) }}
                                 {{ form_widget(persorgForm.website4) }}
         
                             </div>
