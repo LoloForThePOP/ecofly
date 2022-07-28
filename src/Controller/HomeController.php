@@ -19,11 +19,12 @@ class HomeController extends AbstractController
     /**
      * @Route("/", name="homepage")
      */
-    public function index(EntityManagerInterface $manager, TechnicRepository $technicsRepo): Response
+    public function index(EntityManagerInterface $manager): Response
     {
              
 
-        $technics = $technicsRepo->findAll();
+
+        $technics = $manager->createQuery('SELECT t FROM App\Entity\Technic t WHERE t.isAdminValidated=true ORDER BY t.createdAt DESC')->setMaxResults('30')->getResult();
 
 
         // last 20 inserted projects presentations
