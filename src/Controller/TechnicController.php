@@ -10,12 +10,13 @@ use App\Form\ImageSlideType;
 use App\Form\VideoSlideType;
 use App\Form\TechnicLogoType;
 use App\Service\ImageResizer;
+use App\Service\MailerService;
 use App\Form\TechnicValidationType;
-use App\Repository\TechnicRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class TechnicController extends AbstractController
@@ -24,7 +25,7 @@ class TechnicController extends AbstractController
     /**
      * @Route("/technic/new", name="new_technic")
      */
-    public function new(Request $request, EntityManagerInterface $manager): Response
+    public function new(Request $request, EntityManagerInterface $manager, MailerService $mailer): Response
     {
 
         $this->denyAccessUnlessGranted('ROLE_USER');
@@ -51,6 +52,21 @@ class TechnicController extends AbstractController
 
             $manager->persist($technic);
             $manager->flush();
+
+            
+            /* Email Webmaster that a new technic presentation has been created (moderation) */
+
+            $sender = $this->getParameter('app.general_contact_email');
+            $receiver = $sender;
+
+            $emailParameters=[
+
+                "techName" => $technic->getName(),
+                "address" => $this->generateUrl('show_technic', ["id"=>$technic->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
+                
+            ];
+
+            $mailer->send($sender, 'Flycore', $receiver, "A New Technic Presentation Has Been Created",'/technic/email_webmaster_notif_new_pp.html.twig', $emailParameters);
 
             $this->addFlash(
                 'success fs-4',
@@ -112,7 +128,7 @@ class TechnicController extends AbstractController
     /**
      * @Route("/technic/{id}/show", name="show_technic")
      */
-    public function show(Technic $technic, Request $request,  EntityManagerInterface $manager, TreatItem $specificTreatments, ImageResizer $imageResizer): Response
+    public function show(Technic $technic, Request $request,  EntityManagerInterface $manager, TreatItem $specificTreatments, ImageResizer $imageResizer, MailerService $mailer): Response
     {
 
         if ($this->isGranted('ROLE_ADMIN')) {
@@ -230,10 +246,22 @@ class TechnicController extends AbstractController
 
                 $manager->flush();
 
-                $this->addFlash(
-                    'success fade-out',
-                    "✅ La technique est validée pour apparaître sur le site"
-                );
+                if($technicValidationform->getData('isAdminValidated')==true){
+
+                    $sender = $this->getParameter('app.general_contact_email');
+                    
+                    $receiver = $technic->getCreator()->getEmail();
+        
+                    $mailer->send($sender, 'Flycore', $receiver, "Votre présentation de technique est validée sur Flycore.", "Votre présentation de technique a été validée par un membre de notre équipe. Merci pour votre participation sur le site 👍 <br><br>L'équipe Flycore.org.");
+
+                    $this->addFlash(
+                        'success fade-out',
+                        "✅ La technique est validée pour apparaître sur le site"
+                    );
+
+                }
+
+
 
                 return $this->redirectToRoute(
                     'show_technic',
@@ -267,13 +295,14 @@ class TechnicController extends AbstractController
 
 
     /**
-     * @Route("/technic/index", name="index_technics")
+     * @Route("/technics/index", name="index_technics")
      */
-    public function index(TechnicRepository $techRepo): Response
+    public function index(EntityManagerInterface $manager): Response
     {
 
-        $technics = $techRepo->findAll();
+        // last 30 inserted projects presentations
 
+        $technics = $manager->createQuery('SELECT t FROM App\Entity\Technic t WHERE t.isAdminValidated=true ORDER BY t.createdAt DESC')->setMaxResults('30')->getResult();
 
         return $this->render('technic/index.html.twig', [
             'technics' => $technics,

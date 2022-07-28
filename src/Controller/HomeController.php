@@ -23,6 +23,7 @@ class HomeController extends AbstractController
     {
              
 
+        // last 30 inserted projects presentations
 
         $technics = $manager->createQuery('SELECT t FROM App\Entity\Technic t WHERE t.isAdminValidated=true ORDER BY t.createdAt DESC')->setMaxResults('30')->getResult();
 
