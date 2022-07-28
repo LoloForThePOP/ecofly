@@ -18,29 +18,6 @@
   <div class="page-container container-lg px-0 px-lg-3">
 
 
-  
-    {# Displaying registered user presentations
-
-    {% if app.user %}
-
-      {% set user_project_presentations = app.user.createdPresentations %}
-
-      {% if user_project_presentations | length > 0 %}
-
-        {{ display.collection("", user_project_presentations | reverse, "user-presentations") }}
-
-      {% endif %}
-
-      {% set user_technic_presentations = app.user.createdPresentations %}
-
-      {% if user_project_presentations | length > 0 %}
-
-        {{ display.collection("", user_project_presentations | reverse, "user-presentations") }} 
-
-      {% endif %}
-
-    {% endif %} #}
-
      <div id="homepage-jumbotron-struct-container" class="container col-xxl-11 px-0 px-md-4 px-lg-4">
 
         {% include "home/_jumbotron.html.twig" with {container_classes: ''} %}
@@ -61,6 +38,33 @@
         </style>
 
       </div>
+
+  
+    {# Displaying registered user presentations #}
+
+    {% if app.user %}
+
+      <div class="mb-5">
+
+          {% set user_project_presentations = app.user.createdPresentations %}
+
+            {% if user_project_presentations | length > 0 %}
+
+              {{ display.collection("", user_project_presentations | reverse, "user-presentations") }}
+
+            {% endif %}
+
+          {% set user_technic_presentations = app.user.createdTechnics %}
+
+            {% if user_technic_presentations | length > 0 %}
+
+              {{ displayTechnics.collection("Mes techniques présentées", user_technic_presentations | reverse, "hide-525") }} 
+
+            {% endif %}
+      
+      </div>
+
+    {% endif %}
 
 
     

@@ -3,15 +3,16 @@
 namespace App\Entity;
 
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use Serializable;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TechnicRepository;
+use Doctrine\Common\Collections\Collection;
 
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
 use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
 
@@ -20,8 +21,9 @@ use Vich\UploaderBundle\Mapping\Annotation\UploadableField;
  * @ORM\HasLifecycleCallbacks()
  * @Vich\Uploadable
  */
-class Technic
+class Technic implements Serializable
 {
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -113,6 +115,20 @@ class Technic
         $this->slides = new ArrayCollection();
 
     }
+
+
+    
+
+    public function serialize()
+    {
+        return serialize($this->id);
+    }
+    
+    public function unserialize($serialized)
+    {
+        $this->id = unserialize($serialized);
+    }
+
 
 
     public function getId(): ?int

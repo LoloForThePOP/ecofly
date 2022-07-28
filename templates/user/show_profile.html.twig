@@ -82,42 +82,6 @@
 
 
 
-    <!-- User Created Project Presentations -->
-    
-    <div class="mb-5">
-        
-        {% if user.createdPresentations | length > 0 %}
-
-            {% set user_presentations = user.createdPresentations %}
-
-            {% set user_presentations_label %}
-
-                {% if user.createdPresentations | length == 1 %}
-
-                    1 présentation de projet créée
-
-                {% else %}
-
-                    {{user.createdPresentations | length}} présentations de projets créées
-
-                {% endif %}
-
-            {% endset %}
-
-            
-            {% import "utilities/_macro_titled_collection.html.twig" as display %}
-
-            {% block javascripts %}<script src="/js/show_more_less_button.js"></script>{% endblock %}
-
-            {{ display.collection(user_presentations_label, user.createdPresentations | reverse) }}
-            
-        {% endif %}
-
-    </div>
-
-    <!-- End of User Created Project Presentations -->
-
-
    <!-- User Description --> 
 
     <div class="row m-0 mb-5">
@@ -136,7 +100,7 @@
 
                         Vous pouvez remplir une description 
                         
-                        <a class="h5" href=""> <span class="badge bg-primary">ici</span></a>
+                        <a class="h5" href="{{ path('edit_public_profile') }}"> <span class="badge bg-primary">ici</span></a>
 
                     </div>
 
@@ -153,6 +117,68 @@
     </div>
 
     <!-- end of User Description --> 
+
+
+
+    <!-- User Created Project Presentations -->
+    
+    <div class="mb-5">
+
+        {% set user_presentations_count = user.createdPresentations | length %}
+        
+        {% if user_presentations_count > 0 %}
+
+            {% set user_created_presentations = user.createdPresentations %}
+
+            {% set user_presentations_label %}
+
+                {% if user_presentations_count == 1 %}
+
+                    1 présentation de projet créée
+
+                {% else %}
+
+                    {{user_presentations_count}} présentations de projets créées
+
+                {% endif %}
+
+            {% endset %}
+
+            
+            {% import "utilities/_macro_titled_collection.html.twig" as display %}
+
+            <script src="/js/show_more_less_button.js"></script>
+
+            {{ display.collection(user_presentations_label, user_created_presentations | reverse) }}
+            
+        {% endif %}
+
+    </div>
+
+    <!-- End of User Created Project Presentations -->
+
+
+
+    <!-- User Created Technics Presentations -->
+    
+    <div class="mb-5">
+
+        {% set user_technic_presentations = app.user.createdTechnics %}
+
+        {% if user_technic_presentations | length > 0 %}
+
+            {% import "utilities/_macro_titled_technics_collection.html.twig" as displayTechnics %}
+
+            <script src="/js/show_more_less_button.js"></script>
+
+            {{ displayTechnics.collection("Techniques présentées", user_technic_presentations | reverse, "hide-525") }} 
+
+        {% endif %}
+
+    </div>
+
+    <!-- End of User Created Technics Presentations -->
+
 
 
     <!-- User Websites --> 

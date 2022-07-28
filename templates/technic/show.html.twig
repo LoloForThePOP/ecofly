@@ -4,12 +4,7 @@
 
     <link href="/css/technic_presentation_page.css" rel="stylesheet">
 
-    
-    {% if is_granted('ROLE_ADMIN') %}
-
-        <link href="/css/technic_wysiwyg.css" rel="stylesheet">
-
-    {% endif %}
+    <link href="/css/technic_wysiwyg.css" rel="stylesheet">
 
 
 {% endblock %}
@@ -18,9 +13,18 @@
 
 {% block body %}
 
-    {% set userPresenter = true %}
 
-    <div class=" {{userPresenter ? 'in-edition-mode'}} tp-container page-container container col-lg-11 col-xxl-9 px-0 pb-5">
+
+    {% set isAdmin = false %}
+    {% if is_granted('ROLE_ADMIN') %} {% set isAdmin = true %} {% endif %}
+
+    {% set isCreator = false %}
+    {% if technic.getCreator == app.user %} {% set isCreator = true %} {% endif %}
+
+
+    
+
+    <div class=" {{isCreator or isAdmin ? 'in-edition-mode'}} tp-container page-container container col-lg-11 col-xxl-9 px-0 pb-5">
 
         <div class="row mb-5">
 
@@ -51,7 +55,7 @@
 
         <div class="row mb-5">
 
-            {% if userPresenter %}
+            {% if isAdmin %}
 
                 <div class="pp-edition-mode d-flex align-items-center mb-3">
 
@@ -134,15 +138,19 @@
 
                             </div>
 
-                            <button class="carousel-control-prev" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
+                            {% if countSlides > 1 %}
 
-                            <button class="carousel-control-next" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
+                                <button class="carousel-control-prev" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Previous</span>
+                                </button>
+
+                                <button class="carousel-control-next" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="visually-hidden">Next</span>
+                                </button>
+                            
+                            {% endif %}
 
                         </div>
                     
@@ -232,7 +240,7 @@
 
 
 
-        {% if userPresenter %}
+        {% if isCreator or isAdmin %}
             
             {# Switch Between Edition Mode and Consultation Mode Button #}
 
@@ -247,12 +255,10 @@
         {% endif %}
 
         
-             
-
 
         <div class="pp-edition-mode">
         
-            {% if is_granted('edit', technic) %}
+            {% if isCreator or isAdmin %}
 
                 {% include "technic/_show/wysiwyg.html.twig" %}
                 
@@ -264,7 +270,7 @@
                 
             {% endif %}        
 
-            {% if is_granted('ROLE_ADMIN') %}
+            {% if isAdmin %}
 
                 <div class="my-5">
 
@@ -304,8 +310,6 @@
                 {% include "project_presentation/edit/slides/add_video_form.html.twig" with {'form': addVideoForm} %}
 
 
-
-            
             {% endif %}    
 
         </div>

@@ -20,9 +20,12 @@
 
            <div class="">
 
-            <div class="container d-flex align-items-center justify-content-center text-center my-3">
+            <a class="dropdown-item" href="{{path("show_user_profile", {'userNameSlug': app.user.userNameSlug})}}">
+              <div class="container d-flex align-items-center justify-content-center text-center my-3">
               {{app.user.userName}}
-            </div>
+              </div>
+
+            </a>
   
             <li>
   
