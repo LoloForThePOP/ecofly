@@ -128,7 +128,7 @@ class Technic implements Serializable
     {
         $this->id = unserialize($serialized);
     }
-
+ 
 
 
     public function getId(): ?int
