@@ -1,7 +1,14 @@
 {% extends 'base.html.twig' %}
 
 
-{% block stylesheets %}<link href="/css/titled_collection.css" rel="stylesheet">{% endblock %}
+{% block stylesheets %}
+
+    <link href="/css/titled_collection.css" rel="stylesheet">
+    <link href="/css/project_card.css" rel="stylesheet">
+    
+{% endblock %}
+
+
 
 
 {% block name %}Galerie des Projets{% endblock %}
@@ -12,7 +19,7 @@
 
         <h2 class="text-center fw-bold mt-4 mt-md-3 mb-md-5">Galerie des Projets</h2>
 
-        {% import "utilities/_macro_titled_collection.html.twig" as display %} {# technic presentation cards #}
+        {% import "utilities/_macro_titled_projects_collection.html.twig" as display %} {# technic presentation cards #}
 
         {{ display.collection("", projects | reverse) }} 
 

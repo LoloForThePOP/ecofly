@@ -12,7 +12,7 @@
 {% block javascripts %}<script src="/js/show_more_less_button.js"></script>
 {% endblock %}
 
-{% import "utilities/_macro_titled_collection.html.twig" as display %} {# project presentation cards #}
+{% import "utilities/_macro_titled_projects_collection.html.twig" as display %} {# project presentation cards #}
 {% import "utilities/_macro_titled_technics_collection.html.twig" as displayTechnics %} {# technic presentation cards #}
 
 {% block body %}
@@ -70,7 +70,7 @@
 
 
 
-    <div class="container col-lg-12 col-xxl-9 px-md-0">
+    <div class="container col-lg-12 col-xxl-9 px-0">
 
       {{ displayTechnics.collection("Galerie des Techniques", technics | reverse, "", "hide-525") }}
     

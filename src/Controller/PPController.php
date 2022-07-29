@@ -1098,7 +1098,7 @@ class PPController extends AbstractController
 
 
     /**
-     * @Route("/projects/index", name="index_projects")
+     * @Route("/list-projects/index", name="index_projects")
      */
     public function index(EntityManagerInterface $manager): Response
     {
@@ -1107,7 +1107,7 @@ class PPController extends AbstractController
 
         $projects =  $manager->createQuery('SELECT p FROM App\Entity\PPBase p WHERE p.isPublished=true AND p.overallQualityAssessment>=2 AND p.isAdminValidated=true AND p.isDeleted=false ORDER BY p.createdAt DESC')->setMaxResults('30')->getResult();
 
-        return $this->render('projects/index.html.twig', [
+        return $this->render('project_presentation/index.html.twig', [
             'projects' => $projects,
         ]);
 
