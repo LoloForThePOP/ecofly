@@ -60,7 +60,7 @@ class RegisteredUserController extends AbstractController
 
             $this->addFlash(
                 'success',
-                'Les Modifications ont étées enregistrées.'
+                'Les Modifications ont été enregistrées.'
             );
 
             return $this->redirectToRoute('show_user_profile',[
