@@ -81,9 +81,28 @@
                     {{ form_widget(form.cons) }}
                 
                 </div>
+                
             
             
             </div>
+
+            <div class=" mb-5">
+
+                <div class="mb-2">
+                    {{ form_label(form.progressBar) }}
+                </div>
+
+                {{ form_errors(form.progressBar) }}
+                
+                <div class="col-md-6">
+                
+                    {{ form_widget(form.progressBar) }}
+
+                </div>
+            
+            </div>
+
+
 
             <button type="submit" class="btn btn-validate mb-2 me-3">✔️ Valider</button>
 

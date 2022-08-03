@@ -103,6 +103,26 @@ class Technic implements Serializable
      */
     private $creator;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $shortDescription;
+
+    /**
+     * @ORM\Column(type="smallint", nullable=true)
+     */
+    private $progressBar;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $notes;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $sources;
+
 
 
 
@@ -297,6 +317,54 @@ class Technic implements Serializable
     public function setCreator(?User $creator): self
     {
         $this->creator = $creator;
+
+        return $this;
+    }
+
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription(?string $shortDescription): self
+    {
+        $this->shortDescription = $shortDescription;
+
+        return $this;
+    }
+
+    public function getProgressBar(): ?int
+    {
+        return $this->progressBar;
+    }
+
+    public function setProgressBar(?int $progressBar): self
+    {
+        $this->progressBar = $progressBar;
+
+        return $this;
+    }
+
+    public function getNotes(): ?string
+    {
+        return $this->notes;
+    }
+
+    public function setNotes(?string $notes): self
+    {
+        $this->notes = $notes;
+
+        return $this;
+    }
+
+    public function getSources(): ?string
+    {
+        return $this->sources;
+    }
+
+    public function setSources(?string $sources): self
+    {
+        $this->sources = $sources;
 
         return $this;
     }

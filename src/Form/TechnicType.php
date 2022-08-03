@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class TechnicType extends AbstractType
@@ -66,7 +67,21 @@ class TechnicType extends AbstractType
                         'class' => "tinymceProsCons",
                     ],
                 ]
-            );
+            )
+
+            ->add(
+                'progressBar',
+                IntegerType::class,
+                [
+                    'label' => 'Pourcentage de décarbonation entre 1 et 100 ?',
+                    'required'     => false,
+                    'attr'     => array(
+                        'min'  => 1,
+                        'max'  => 100,
+                        'step' => 1,
+                    ),
+                ]
+            )
 
 
         ;

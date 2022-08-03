@@ -1,0 +1,56 @@
+
+<div class="row mb-5">
+
+    {% if technic.pros is not empty %}
+    
+        <div class="pros col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
+
+            <div class="border rounded p-3 pb-1 h-100">
+                
+                <h4 class="mb-3">👍 Intérêts / avantages</h4>
+
+                <div class="ps-md-3">
+                
+                    {{technic.pros | raw}}
+
+                </div>
+            
+            </div>
+
+        </div>
+
+    {% endif %}
+
+    {% if technic.cons is not empty %}    
+
+        <div class="cons col-md-6 p-0">
+
+            <div class="border rounded p-3 pb-1 h-100">
+
+                <h4 class="mb-3">👎 Limites / inconvénients</h4>
+
+                <div class="ps-md-3">
+                
+                    {{technic.cons | raw}}
+
+                </div>
+
+            </div>
+
+        </div>
+    
+    {% endif %}
+
+    <style>
+
+        .pros li:not(:last-child), .cons li:not(:last-child) {
+
+            margin-bottom : 10px;
+
+        }
+    
+    
+    </style>
+
+
+</div>

@@ -184,6 +184,7 @@ class TechnicController extends AbstractController
 
                 $technic->addSlide($videoSlide);
                 $manager->persist($videoSlide);
+                $manager->flush();
 
                 $this->addFlash(
                     'success',
