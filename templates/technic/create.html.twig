@@ -86,6 +86,36 @@
             
             </div>
 
+            <div class="row my-5">
+
+                <div class="col-md-6 pe-md-3">
+
+                    <div class="mb-2">
+                        {{ form_label(form.notes) }}
+                    </div>
+
+                    {{ form_errors(form.notes) }}
+
+                    {{ form_widget(form.notes) }}
+
+                </div>
+                
+                <div class="col-md-6 pe-md-2">
+
+                    <div class="mb-2">
+                        {{ form_label(form.sources) }}
+                    </div>
+
+                    {{ form_errors(form.sources) }}
+                    
+                    {{ form_widget(form.sources) }}
+                
+                </div>
+                
+            
+            
+            </div>
+
             <div class=" mb-5">
 
                 <div class="mb-2">

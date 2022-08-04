@@ -1,0 +1,50 @@
+
+<div class="row mb-5">
+
+    {% if technic.notes is not empty %}
+    
+        <div class="pros col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
+
+            <div class="border rounded p-3 pb-1 h-100">
+                
+                <h4 class="mb-3">🧐 Le saviez-vous ?</h4>
+
+                <div class="notes ps-md-3">
+                
+                    {{ technic.notes | raw }}
+
+                </div>
+            
+            </div>
+
+        </div>
+
+    {% endif %}
+
+    {% if technic.sources is not empty %}    
+
+        <div class="cons col-md-6 p-0">
+
+            <div class="border rounded p-3 pb-1 h-100">
+
+                <h4 class="mb-3">⬆️ Sources</h4>
+
+                <div class="sources ps-md-3">
+                
+                    {{ technic.sources | raw }}
+
+                </div>
+
+            </div>
+
+        </div>
+    
+    {% endif %}
+
+    <style>
+
+    
+    </style>
+
+
+</div>

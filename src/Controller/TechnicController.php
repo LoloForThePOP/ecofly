@@ -141,7 +141,7 @@ class TechnicController extends AbstractController
             if ($addImageForm->isSubmitted() && $addImageForm->isValid()) {
                 
 
-                $imageSlide->setPosition(count($technic->getSlides()));
+                $imageSlide->setPosition(1); //count($technic->getSlides())
 
                 $technic->addSlide($imageSlide);
 
@@ -180,7 +180,7 @@ class TechnicController extends AbstractController
                 $videoSlide->setAddress($youtubeVideoIdentifier);   
 
                 // count previous slide in order to set new slides positions
-                $videoSlide->setPosition(count($technic->getSlides()));
+                $videoSlide->setPosition(1);
 
                 $technic->addSlide($videoSlide);
                 $manager->persist($videoSlide);

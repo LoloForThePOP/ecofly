@@ -70,6 +70,32 @@ class TechnicType extends AbstractType
             )
 
             ->add(
+                'notes',
+                TextareaType::class,
+                [
+                    'label' => '🧐 Anectodes / infos intéressantes ?',
+                    'required'     => false,
+                    'sanitize_html' => true,
+                    'attr' => [
+                        'class' => "tinymceProsCons",
+                    ],
+                ]
+            )
+
+            ->add(
+                'sources',
+                TextareaType::class,
+                [
+                    'label' => '⬆ Sources',
+                    'required'     => false,
+                    'sanitize_html' => true,
+                    'attr' => [
+                        'class' => "tinymceProsCons",
+                    ],
+                ]
+            )
+
+            ->add(
                 'progressBar',
                 IntegerType::class,
                 [

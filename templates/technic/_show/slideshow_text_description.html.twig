@@ -45,7 +45,7 @@
 
                     <div class="carousel-inner">
 
-                        {% for slide in slides %}
+                        {% for slide in slides | reverse %}
 
                             <div class="carousel-item {% if loop.first %}active{% endif %}">
 
@@ -93,7 +93,7 @@
 
                     </div>
 
-                    {% if countSlides > 1 %}
+                    {# {% if countSlides > 1 %}
 
                         <button class="carousel-control-prev" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -105,7 +105,7 @@
                             <span class="visually-hidden">Next</span>
                         </button>
                     
-                    {% endif %}
+                    {% endif %} #}
 
                 </div>
             
