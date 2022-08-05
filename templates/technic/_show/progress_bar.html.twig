@@ -2,7 +2,7 @@
 {% if technic.progressBar is not empty %}
 
 
-    <h4 class="p-0 mb-3">🌳 Réduction espérée{% if technic.progressBar < 15 %} - {{technic.progressBar}}%{% endif %}</h4>
+    <h4 class="progress-bar-title p-0 mb-3">🌳 Réduction espérée{% if technic.progressBar < 15 %} - {{technic.progressBar}}%{% endif %}</h4>
 
     <div class="progress p-0">
         <div class="progress-bar" role="progressbar" style="width: {{technic.progressBar}}%" aria-valuenow="{{technic.progressBar}}" aria-valuemin="0" aria-valuemax="100">{% if technic.progressBar >= 15 %}{{technic.progressBar}}%{% endif %}</div>
@@ -18,6 +18,16 @@
             } 
 
         }
+    
+        @media screen and (max-width: 580px) {
+
+            .progress-bar-title{
+
+                font-size: 18px;
+            }
+
+
+        }                
     
     </style>
 
