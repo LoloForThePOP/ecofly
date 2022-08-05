@@ -99,7 +99,7 @@ class TechnicType extends AbstractType
                 'progressBar',
                 IntegerType::class,
                 [
-                    'label' => 'Pourcentage de décarbonation entre 1 et 100 ?',
+                    'label' => 'Pourcentage de réduction des émissions entre 1 et 100 ?',
                     'required'     => false,
                     'attr'     => array(
                         'min'  => 1,

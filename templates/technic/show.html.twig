@@ -26,79 +26,14 @@
 
     <div class=" {{isCreator or isAdmin ? 'in-edition-mode'}} tp-container page-container container col-lg-11 col-xxl-9 px-0 pb-5">
 
-        <div class="row mb-5">
 
-            {# Technic Thumbnail if provided #}
-
-            {% if technic.logo %}
-
-                <div class="col-4 col-md-3 col-lg-2">
-
-                    <img class="thumbnail rounded img-fluid" src="{{ vich_uploader_asset(technic) }}" alt="Technic Thumbnail">
-                
-                </div>
-            
-            {% endif %}
-
-            {# Technic Name #}
-
-            <div class="col-8 col-md-9 col-lg-10 ps-1 ps-md-3 d-flex align-items-center">
-
-                <h2 class="fw-bold">{{technic.name[:1] | upper ~ technic.name[1:]}}</h2>
-
-                {% if isCreator or isAdmin %}
-
-                    <a href="{{ path( 'update_technic', {'id': technic.id} ) }}" class="pp-edition-mode ms-3">Modifier</a>
-                
-                {% endif %}
-
-            </div>
-        
-        </div>
+        {% include "technic/_show/upper_box.html.twig" %}
 
         {% include "technic/_show/slideshow_text_description.html.twig" %}
 
         {% include "technic/_show/pros_cons.html.twig" %}
 
         {% include "technic/_show/notes_sources.html.twig" %}
-
-
-        {# Progress Bar #}
-
-
-        {% if technic.progressBar is not empty %}
-            
-            <div class="row p-0 mb-4">
-
-                <div class="col-md-6">
-
-                    <h4 class="p-0 mb-4">🌳 Potentiel de décarbonation</h4>
-
-                    <div class="progress col-md-8 p-0">
-                        <div class="progress-bar" role="progressbar" style="width: {{technic.progressBar}}%" aria-valuenow="{{technic.progressBar}}" aria-valuemin="0" aria-valuemax="100">{{technic.progressBar}}%</div>
-                    </div>
-
-
-                    <style>
-
-                        @media screen and (min-width: 820px) {
-
-                            .progress{
-                                height:23px;
-                            } 
-
-                        }
-                    
-                    </style>
-
-                </div>
-
-            </div>
-        
-        {% endif %}
-
-
-
 
 
         {% if isCreator or isAdmin %}
