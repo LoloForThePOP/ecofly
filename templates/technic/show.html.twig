@@ -26,7 +26,6 @@
 
     <div class=" {{isCreator or isAdmin ? 'in-edition-mode'}} tp-container page-container container col-lg-11 col-xxl-9 px-0 pb-5">
 
-
         {% include "technic/_show/upper_box.html.twig" %}
 
         {% include "technic/_show/slideshow_text_description.html.twig" %}
@@ -34,6 +33,20 @@
         {% include "technic/_show/pros_cons.html.twig" %}
 
         {% include "technic/_show/notes_sources.html.twig" %}
+
+        <div class="row">
+
+            <div class="ps-2">
+                
+                <div class="d-inline-block border rounded p-3">
+
+                    Page crée par <a href="{{path('show_user_profile', {'userNameSlug': technic.getCreator.userNameSlug})}}">{{technic.getCreator}}</a>
+                
+                </div>
+            
+            </div>
+
+        </div>
 
 
         {% if isCreator or isAdmin %}
