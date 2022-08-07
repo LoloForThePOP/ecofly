@@ -60,7 +60,7 @@ class TechnicType extends AbstractType
                 'cons',
                 TextareaType::class,
                 [
-                    'label' => '🤔 limites / inconvénients  de la technique ?',
+                    'label' => '🙁 limites / inconvénients  de la technique ?',
                     'required'     => false,
                     'sanitize_html' => true,
                     'attr' => [
@@ -86,7 +86,7 @@ class TechnicType extends AbstractType
                 'sources',
                 TextareaType::class,
                 [
-                    'label' => '⬆ Sources',
+                    'label' => '🤔 Sources',
                     'required'     => false,
                     'sanitize_html' => true,
                     'attr' => [
@@ -99,7 +99,7 @@ class TechnicType extends AbstractType
                 'licence',
                 TextareaType::class,
                 [
-                    'label' => 'Licences icônes utilisées',
+                    'label' => '©️ Licences icônes utilisées',
                     'required'     => false,
                     'sanitize_html' => true,
 
@@ -117,6 +117,21 @@ class TechnicType extends AbstractType
                         'max'  => 100,
                         'step' => 1,
                     ),
+                ]
+            )
+
+            
+            ->add(
+                'status',
+                TextareaType::class,
+                [
+                    'label' => '🏗️ La technique est-elle déjà utilisée ?',
+                    'required'     => false,
+                    'sanitize_html' => true,
+                    'attr' => [
+                        'class' => "tinymceProsCons",
+                    ],
+
                 ]
             )
 

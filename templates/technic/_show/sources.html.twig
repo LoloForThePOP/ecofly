@@ -1,0 +1,50 @@
+
+<div class="row mb-2 mb-md-3 mb-lg-5">
+
+    {# {% if technic.notes is not empty %}
+    
+        <div class="pros col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0">
+
+            <div class="sm-border-none border rounded p-3 pb-1 h-100">
+                
+                <h4 class="mb-3">🤔 Le saviez-vous ?</h4>
+
+                <div class="notes d-flex align-items-center ps-md-3" style="min-height:75%;">
+                
+                    {{ technic.notes | raw }}
+
+                </div>
+            
+            </div>
+
+        </div>
+
+    {% endif %} #}
+
+    {% if technic.sources is not empty %}    
+
+        <div class=" col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0">
+
+            <div class="sm-border-none border rounded p-3 pb-1 h-100">
+
+                <h4 class="mb-3">🧐 Sources</h4>
+
+                <div class="sources ps-md-3" style="word-break: break-all;">
+                
+                    {{ technic.sources | raw }}
+
+                </div>
+
+            </div>
+
+        </div>
+    
+    {% endif %}
+
+    <style>
+
+    
+    </style>
+
+
+</div>

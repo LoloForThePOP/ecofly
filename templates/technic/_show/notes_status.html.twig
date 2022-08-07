@@ -21,17 +21,17 @@
 
     {% endif %}
 
-    {% if technic.sources is not empty %}    
+    {% if technic.status is not empty %}    
 
         <div class="cons col-md-6 p-0">
 
             <div class="sm-border-none border rounded p-3 pb-1 h-100">
 
-                <h4 class="mb-3">🧐 Sources</h4>
+                <h4 class="mb-3">🚧 Utilisation de cette technique</h4>
 
                 <div class="sources ps-md-3" style="word-break: break-all;">
                 
-                    {{ technic.sources | raw }}
+                    {{ technic.status | raw }}
 
                 </div>
 

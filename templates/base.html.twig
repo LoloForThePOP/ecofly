@@ -40,9 +40,12 @@
 
     {% block priorJavascipts %}{% endblock %}
     
+    <script src="/js/popper.min.js"></script>
+
     <script src="/js/bootstrap.js"></script>
 
     <script src="/js/jquery-3.6.0.js"></script>
+
     
     {# <script src="/js/tracking.js"></script> #}
         
@@ -80,11 +83,26 @@
 
         });
 
-
-
+    /* Enable Popovers Everywhere */
 
 
       $(document).ready(function(){
+
+
+        var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+
+        var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+
+            return new bootstrap.Popover(popoverTriggerEl, {html: true})
+
+        })
+
+        var popover = new bootstrap.Popover(document.querySelector('.popover-dismiss'), {
+            trigger: 'focus',
+        })
+
+
+        /* Feedbacks fading-out */
 
         $('.fade-out').delay(5000).fadeOut();
         
@@ -112,6 +130,8 @@
 </head>
 
 <body>
+
+
 
     {% include "_partials/GDPR.html.twig" %}
 

@@ -10,7 +10,7 @@
 
         <div class="alert alert-success mt-4" role="alert">
             
-           <div><span class="fs-5 pb-1 pe-2">🌳 </span> Merci de présenter une technique qui rendrait l'aviation plus durable.</div>
+           <div><span class="fs-5 pb-1 pe-2">🙏 </span> Merci de présenter une technique qui rendrait l'aviation plus durable.</div>
 
         </div>
         
@@ -104,6 +104,22 @@
                 <div class="col-md-6 pe-md-2">
 
                     <div class="mb-2">
+                        {{ form_label(form.status) }}
+                    </div>
+
+                    {{ form_errors(form.status) }}
+                    
+                    {{ form_widget(form.status) }}
+                
+                </div>
+            
+            </div>
+
+            <div class="row my-5">
+                
+                <div class="col-md-6 pe-md-2">
+
+                    <div class="mb-2">
                         {{ form_label(form.sources) }}
                     </div>
 
@@ -112,10 +128,14 @@
                     {{ form_widget(form.sources) }}
                 
                 </div>
-                
-            
             
             </div>
+
+
+
+
+
+
 
             <div class=" mb-5">
 

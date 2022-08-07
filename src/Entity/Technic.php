@@ -126,9 +126,19 @@ class Technic implements Serializable
     private $sources;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $licence;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nameSlug;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $status;
 
 
 
@@ -401,9 +411,33 @@ class Technic implements Serializable
         return $this->licence;
     }
 
-    public function setLicence(string $licence): self
+    public function setLicence(?string $licence): self
     {
         $this->licence = $licence;
+
+        return $this;
+    }
+
+    public function getNameSlug(): ?string
+    {
+        return $this->nameSlug;
+    }
+
+    public function setNameSlug(string $nameSlug): self
+    {
+        $this->nameSlug = $nameSlug;
+
+        return $this;
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(?string $status): self
+    {
+        $this->status = $status;
 
         return $this;
     }
