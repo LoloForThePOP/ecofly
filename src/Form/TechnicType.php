@@ -20,7 +20,7 @@ class TechnicType extends AbstractType
                 'name', 
                 TextType::class,
                 [
-                    'label' => 'Quel est le nom de la technique ?',
+                    'label' => '✒️ Quel est le nom de la technique ?',
                     'attr' => [
                         
                         'placeholder'    => 'Exemple : carburants synthétiques',
@@ -34,7 +34,7 @@ class TechnicType extends AbstractType
                 'textDescription',
                 TextareaType::class,
                 [
-                    'label' => 'Décrire la technique en quelques mots ou paragraphes',
+                    'label' => '✍️ Décrire la technique en quelques mots ou paragraphes',
                     'required'     => false,
                     'sanitize_html' => true,
                     'attr' => [
@@ -96,10 +96,21 @@ class TechnicType extends AbstractType
             )
 
             ->add(
+                'licence',
+                TextareaType::class,
+                [
+                    'label' => 'Licences icônes utilisées',
+                    'required'     => false,
+                    'sanitize_html' => true,
+
+                ]
+            )
+
+            ->add(
                 'progressBar',
                 IntegerType::class,
                 [
-                    'label' => 'Pourcentage de réduction des émissions entre 1 et 100 ?',
+                    'label' => '🌳 Pourcentage de réduction des émissions estimé (entre 1 et 100)',
                     'required'     => false,
                     'attr'     => array(
                         'min'  => 1,

@@ -40,7 +40,39 @@
                 
                 <div class="d-inline-block border rounded p-3">
 
-                    Page crée par <a href="{{path('show_user_profile', {'userNameSlug': technic.getCreator.userNameSlug})}}">{{technic.getCreator.userName}}</a>
+                    <div class="">
+                    
+                        Page créée par <a href="{{path('show_user_profile', {'userNameSlug': technic.getCreator.userNameSlug})}}">{{technic.getCreator.userName}}</a>.
+                        
+                    </div>
+
+                    <div class="">
+                    
+                        Le {{technic.createdAt | date('d-m-Y')}}.
+
+                    </div>
+
+                    {% if technic.updatedAt %}
+
+                        <div class="">
+                        
+                            Mise à jour le {{technic.createdAt | date('d-m-Y')}}.
+
+                        </div>
+                    
+                    {% endif %}
+
+                    <div class="">
+                    
+                        Complétée par les rédacteurs du site.
+                        
+                    </div>
+
+                    <div class="">
+                    
+                        Licence Creative Commons <a href="https://creativecommons.org/licenses/by/4.0/deed.fr">CC-BY</a>.
+
+                    </div>
                 
                 </div>
             
@@ -80,37 +112,6 @@
             {% endif %}        
 
             {% if isAdmin %}
-
-                <div class="my-5">
-
-                    <h4 class="mb-3">🔑 Actions Admin</h4>
-
-                    <div class="border border-primary rounded mb-4 p-3">
-
-                        {{ form_start(technicLogoForm) }}
-
-                        {{form_widget(technicLogoForm)}}
-
-                        <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
-
-                        {{ form_end(technicLogoForm) }}
-
-                    </div>
-
-                    <div class="border border-primary rounded my-4 p-3">
-
-                        {{ form_start(technicValidationForm) }}
-
-                            {{form_widget(technicValidationForm)}}
-
-                            <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
-
-                        {{ form_end(technicValidationForm) }}
-
-                    </div>
-                    
-                </div>
-
 
                 {# Forms inclusions #}
 

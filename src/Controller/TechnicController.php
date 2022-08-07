@@ -90,7 +90,7 @@ class TechnicController extends AbstractController
     /**
      * @Route("/technic/{id}/update", name="update_technic")
      */
-    public function update(Technic $technic, Request $request, EntityManagerInterface $manager): Response
+    public function update(Technic $technic, Request $request, EntityManagerInterface $manager, MailerService $mailer): Response
     {
 
         $this->denyAccessUnlessGranted('edit', $technic);
@@ -117,6 +117,89 @@ class TechnicController extends AbstractController
 
         }
 
+        if($this->isGranted('ROLE_ADMIN')){
+
+            $technicLogoForm = $this->createForm(
+                TechnicLogoType::class,
+                $technic,
+               
+            );
+    
+            $technicLogoForm->handleRequest($request);
+    
+            if ($technicLogoForm->isSubmitted() && $technicLogoForm->isValid()) {
+    
+                $manager->flush();
+    
+                $this->addFlash(
+                    'success fade-out',
+                    "✅ Un logo a été ajouté pour la technique ".$technic->getName()."."
+                );
+    
+                return $this->redirectToRoute(
+                    'show_technic',
+    
+                    [
+    
+                        'id' => $technic->getId(),
+    
+                    ]
+    
+                );
+    
+            }
+    
+    
+            $technicValidationform = $this->createForm(
+                TechnicValidationType::class,
+                $technic,
+               
+            );
+    
+            $technicValidationform->handleRequest($request);
+    
+            if ($technicValidationform->isSubmitted() && $technicValidationform->isValid()) {
+    
+                $manager->flush();
+    
+                if($technicValidationform->getData('isAdminValidated')==true){
+    
+                    $sender = $this->getParameter('app.general_contact_email');
+                    
+                    $receiver = $technic->getCreator()->getEmail();
+        
+                    $mailer->send($sender, 'Flycore', $receiver, "Votre présentation de technique est validée sur Flycore.", "Votre présentation de technique a été validée par un membre de notre équipe. Merci pour votre participation sur le site 👍 <br><br>L'équipe Flycore.org.");
+    
+                    $this->addFlash(
+                        'success fade-out',
+                        "✅ La technique est validée pour apparaître sur le site"
+                    );
+    
+                }
+    
+    
+    
+                return $this->redirectToRoute(
+                    'show_technic',
+    
+                    [
+    
+                        'id' => $technic->getId(),
+    
+                    ]
+    
+                );
+    
+            }
+    
+            return $this->render('technic/create.html.twig', [
+                'form' => $form->createView(),
+                'technicLogoForm' => $technicLogoForm->createView(),
+                'technicValidationForm' => $technicValidationform->createView(),
+            ]);
+
+        }
+
         return $this->render('technic/create.html.twig', [
             'form' => $form->createView(),
         ]);
@@ -128,7 +211,7 @@ class TechnicController extends AbstractController
     /**
      * @Route("/technic/{id}/show", name="show_technic")
      */
-    public function show(Technic $technic, Request $request,  EntityManagerInterface $manager, TreatItem $specificTreatments, ImageResizer $imageResizer, MailerService $mailer): Response
+    public function show(Technic $technic, Request $request,  EntityManagerInterface $manager, TreatItem $specificTreatments, ImageResizer $imageResizer): Response
     {
 
         if ($this->isGranted('ROLE_ADMIN')) {
@@ -204,85 +287,10 @@ class TechnicController extends AbstractController
 
             }
 
-            $technicLogoForm = $this->createForm(
-                TechnicLogoType::class,
-                $technic,
-               
-            );
-
-            $technicLogoForm->handleRequest($request);
-
-            if ($technicLogoForm->isSubmitted() && $technicLogoForm->isValid()) {
-
-                $manager->flush();
-
-                $this->addFlash(
-                    'success fade-out',
-                    "✅ Un logo a été ajouté pour la technique ".$technic->getName()."."
-                );
-
-                return $this->redirectToRoute(
-                    'show_technic',
-    
-                    [
-    
-                        'id' => $technic->getId(),
-    
-                    ]
-
-                );
-
-            }
-
-
-            $technicValidationform = $this->createForm(
-                TechnicValidationType::class,
-                $technic,
-               
-            );
-
-            $technicValidationform->handleRequest($request);
-
-            if ($technicValidationform->isSubmitted() && $technicValidationform->isValid()) {
-
-                $manager->flush();
-
-                if($technicValidationform->getData('isAdminValidated')==true){
-
-                    $sender = $this->getParameter('app.general_contact_email');
-                    
-                    $receiver = $technic->getCreator()->getEmail();
-        
-                    $mailer->send($sender, 'Flycore', $receiver, "Votre présentation de technique est validée sur Flycore.", "Votre présentation de technique a été validée par un membre de notre équipe. Merci pour votre participation sur le site 👍 <br><br>L'équipe Flycore.org.");
-
-                    $this->addFlash(
-                        'success fade-out',
-                        "✅ La technique est validée pour apparaître sur le site"
-                    );
-
-                }
-
-
-
-                return $this->redirectToRoute(
-                    'show_technic',
-    
-                    [
-    
-                        'id' => $technic->getId(),
-    
-                    ]
-
-                );
-
-            }
-
             return $this->render('technic/show.html.twig', [
                 'technic' => $technic,
                 "addImageForm" => $addImageForm->createView(),
                 "addVideoForm" => $addVideoForm->createView(),
-                "technicLogoForm" => $technicLogoForm->createView(),
-                "technicValidationForm" => $technicValidationform->createView(),
             ]);
 
         }

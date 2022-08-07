@@ -4,13 +4,15 @@ namespace App\Entity;
 
 
 use Serializable;
+
+use Doctrine\ORM\Mapping\PreUpdate;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\TechnicRepository;
+
 use Doctrine\Common\Collections\Collection;
-
 use Symfony\Component\HttpFoundation\File\File;
-use Doctrine\Common\Collections\ArrayCollection;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Vich\UploaderBundle\Mapping\Annotation\Uploadable;
@@ -123,6 +125,11 @@ class Technic implements Serializable
      */
     private $sources;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $licence;
+
 
 
 
@@ -192,6 +199,8 @@ class Technic implements Serializable
         return $this;
     }
 
+
+
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
@@ -202,6 +211,20 @@ class Technic implements Serializable
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+
+    
+
+    /**
+     * 
+     * Automatically update updatedAt when an attribute is changed
+     * @PreUpdate
+    */
+    public function autoUpdatedAt(){
+
+        $this->updatedAt = new \DateTimeImmutable();
+
     }
 
 
@@ -220,6 +243,8 @@ class Technic implements Serializable
     }
 
 
+
+
     /**
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile|null $logoFile
@@ -234,6 +259,8 @@ class Technic implements Serializable
 
         $this->updatedAt = new \DateTimeImmutable();
     }
+
+
 
     public function getLogoFile(): ?File
     {
@@ -365,6 +392,18 @@ class Technic implements Serializable
     public function setSources(?string $sources): self
     {
         $this->sources = $sources;
+
+        return $this;
+    }
+
+    public function getLicence(): ?string
+    {
+        return $this->licence;
+    }
+
+    public function setLicence(string $licence): self
+    {
+        $this->licence = $licence;
 
         return $this;
     }

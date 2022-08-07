@@ -8,29 +8,30 @@
 
     <h2 class="mt-md-3 mb-md-4">🛠️ Présenter une technique</h2>
 
-        <div class="alert alert-success d-flex align-items-center mt-4" role="alert">
+        <div class="alert alert-success mt-4" role="alert">
             
-           <span class="fs-5 pb-1 pe-2">🌳 </span> Merci de présenter une technique qui rendrait l'aviation plus durable.
+           <div><span class="fs-5 pb-1 pe-2">🌳 </span> Merci de présenter une technique qui rendrait l'aviation plus durable.</div>
 
         </div>
         
-        <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 
-            <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
-            </symbol>
-           
-        </svg>
-
-        <div class="alert alert-primary d-flex align-items-center" role="alert">
+        <div class="alert alert-primary" role="alert">
             
-            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
             
             <div>
-                Nous ajouterons des photos ou des images pour illustrer votre contribution.
+                <span class="fs-5 pb-1 pe-2">©️ </span>Votre contribution sera présentée sous licence creative commons.
+            </div>
+
+            <hr>
+
+            <div>
+            
+                <span class="fs-5 pb-1 pe-2">👉 </span> Nous ajouterons des photos ou des images pour illustrer votre contribution.
             </div>
 
         </div>
+
+      
 
 
         {{ form_start(form) }}
@@ -132,6 +133,29 @@
             
             </div>
 
+            
+            {# Admin Actions #} 
+
+            {% set isAdmin = false %}
+            {% if is_granted('ROLE_ADMIN') %} {% set isAdmin = true %} {% endif %}
+
+            <div class="{% if not isAdmin %}d-none{% endif %} mb-5">
+
+                <div class="mb-2">
+
+                    {{ form_label(form.licence) }}
+
+                </div>
+
+                {{ form_errors(form.licence) }}
+                
+                <div class="col-md-6">
+                
+                    {{ form_widget(form.licence) }}
+
+                </div>
+            
+            </div>
 
 
             <button type="submit" class="btn btn-validate mb-2 me-3">✔️ Valider</button>
@@ -139,6 +163,44 @@
             <a href="{{path('homepage')}}"><button type="button" class="btn btn-go-back mb-2">❌ Annuler</button></a>
 
         {{ form_end(form) }}
+
+
+
+        
+                
+            {% if isAdmin %}
+
+                <div class="my-5">
+
+                    <h4 class="mb-4">🔑 Autres Actions Admin</h4>
+
+                    <div class="border border-primary rounded mb-4 p-3">
+
+                        {{ form_start(technicLogoForm) }}
+
+                        {{form_widget(technicLogoForm)}}
+
+                        <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
+
+                        {{ form_end(technicLogoForm) }}
+
+                    </div>
+
+                    <div class="border border-primary rounded my-4 p-3">
+
+                        {{ form_start(technicValidationForm) }}
+
+                            {{form_widget(technicValidationForm)}}
+
+                            <button type="submit" class="btn btn-validate mb-2 me-3">Envoyer</button>
+
+                        {{ form_end(technicValidationForm) }}
+
+                    </div>
+                    
+                </div>
+
+            {% endif %}    
 
 
     </div>
@@ -225,5 +287,21 @@
     </script>
 
 
+
+{% endblock %}
+
+
+
+{% block javascripts %}
+
+  <script>
+    
+      $(document).ready(function(){
+
+        $(".form-check").addClass("mt-4");
+
+      });
+
+  </script>
 
 {% endblock %}
