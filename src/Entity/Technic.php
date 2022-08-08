@@ -131,7 +131,7 @@ class Technic implements Serializable
     private $licence;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $nameSlug;
 
@@ -423,7 +423,7 @@ class Technic implements Serializable
         return $this->nameSlug;
     }
 
-    public function setNameSlug(string $nameSlug): self
+    public function setNameSlug(?string $nameSlug): self
     {
         $this->nameSlug = $nameSlug;
 
