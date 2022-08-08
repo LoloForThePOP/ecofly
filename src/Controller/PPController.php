@@ -777,7 +777,7 @@ class PPController extends AbstractController
                             
                             $receiver = $presentation->getCreator()->getEmail();
                 
-                            $mailer->send($sender, 'Flycore', $receiver, "Votre présentation de projet est validée sur Flycore.", "Votre présentation de projet a été validée par un membre de notre équipe. Merci pour votre participation sur le site 👍 <br><br>L'équipe Flycore.org.");
+                            $mailer->send($sender, 'Flycore', $receiver, "Votre présentation de projet est validée sur Flycore.", "Votre présentation de projet a été validée par un membre de notre équipe. Merci pour votre aide sur le site 👍 <br><br>L'équipe Flycore.org.");
 
                         }
     
