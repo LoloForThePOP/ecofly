@@ -83,6 +83,7 @@ class TechnicController extends AbstractController
 
         return $this->render('technic/create.html.twig', [
             'form' => $form->createView(),
+            'instance' => 'new',
         ]);
 
     }
@@ -194,6 +195,7 @@ class TechnicController extends AbstractController
     
             return $this->render('technic/create.html.twig', [
                 'form' => $form->createView(),
+                'instance' => 'update',
                 'technicLogoForm' => $technicLogoForm->createView(),
                 'technicValidationForm' => $technicValidationform->createView(),
             ]);
@@ -202,6 +204,7 @@ class TechnicController extends AbstractController
 
         return $this->render('technic/create.html.twig', [
             'form' => $form->createView(),
+            'instance' => 'update',
         ]);
 
     }
