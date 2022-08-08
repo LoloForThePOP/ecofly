@@ -3,7 +3,7 @@
 
     {% if technic.notes is not empty %}
     
-        <div class="pros col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
+        <div class="col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
 
             <div class="sm-border-none border rounded p-3 pb-1 h-100">
                 
@@ -23,13 +23,13 @@
 
     {% if technic.status is not empty %}    
 
-        <div class="cons col-md-6 p-0">
+        <div class="col-md-6 p-0">
 
             <div class="sm-border-none border rounded p-3 pb-1 h-100">
 
                 <h4 class="mb-3">🚧 Utilisation actuelle</h4>
 
-                <div class="sources ps-md-3" style="word-break: break-all;">
+                <div class="sources ps-md-3">
                 
                     {{ technic.status | raw }}
 
