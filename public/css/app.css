@@ -267,6 +267,13 @@ label:active:after {
     padding-top: 55px;
 }
 
+/* Info Tooltip Icons */
+
+.info-popover-icon{
+
+    margin-left: 4px;
+    cursor: pointer;
+}
 
 /* page container */
 
@@ -333,6 +340,17 @@ label:active:after {
         padding: 5px;
     }
 
+        
+    /* Info Tooltip Icons */
+
+    .info-popover-icon{
+
+        width: 24px;
+        height: 24px;
+        margin-left: 3px;  
+
+    }
+
 
     .sm-text-center{
 
@@ -343,6 +361,8 @@ label:active:after {
 
         border: none !important;
     }
+
+
 
 
 }

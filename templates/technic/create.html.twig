@@ -140,7 +140,7 @@
             <div class=" mb-5">
 
                 <div class="mb-2">
-                    {{ form_label(form.progressBar) }}
+                    {{ form_label(form.progressBar) }} <img src="{{asset ('info.svg', 'misc')}}" class="info-popover-icon" alt="Info icon (an i in a circle)" loading="lazy" width="25" height="25" data-bs-toggle="popover" data-bs-trigger="focus" tabindex="0" title="Qu'est-ce que c'est ?" data-bs-content="Ce pourcentage est une <b>estimation</b> de la réduction du total des émissions de gaz à effets de serre <b>dûs à l'aéronautique à l'échelle mondiale</b> que l'on pourrait obtenir si cette technique était appliquée massivement.<br><br>Cette estimation doit être seulement considérée comme un <b>ordre de grandeur</b>." >
                 </div>
 
                 {{ form_errors(form.progressBar) }}
