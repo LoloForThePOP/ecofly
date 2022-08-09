@@ -49,7 +49,7 @@ class AdminDashboardController extends AbstractDashboardController
     
     {
         yield MenuItem::linkToCrud('Projets', 'fas fa-list', PPBase::class);
-        yield MenuItem::linkToCrud('Techniques', 'fas fa-list', Technic::class);
+        yield MenuItem::linkToCrud('Solutions', 'fas fa-list', Technic::class);
         yield MenuItem::linkToCrud('Utilisateurs', 'fas fa-user', User::class);
         yield MenuItem::linkToLogout('Se déconnecter', 'fa fa-exit');
     }

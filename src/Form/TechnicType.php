@@ -20,7 +20,7 @@ class TechnicType extends AbstractType
                 'name', 
                 TextType::class,
                 [
-                    'label' => '✒️ Quel est le nom de la technique ?',
+                    'label' => '✒️ Quel est le nom de la solution ?',
                     'attr' => [
                         
                         'placeholder'    => 'Exemple : carburants synthétiques',
@@ -34,7 +34,7 @@ class TechnicType extends AbstractType
                 'textDescription',
                 TextareaType::class,
                 [
-                    'label' => '✍️ Décrire la technique en quelques mots ou paragraphes',
+                    'label' => '✍️ Décrire la solution en quelques mots ou paragraphes',
                     'required'     => false,
                     'sanitize_html' => true,
                     'attr' => [
@@ -47,7 +47,7 @@ class TechnicType extends AbstractType
                 'pros',
                 TextareaType::class,
                 [
-                    'label' => '🙂 intérêts / avantages de la technique ?',
+                    'label' => '🙂 intérêts / avantages de la solution ?',
                     'required'     => false,
                     'sanitize_html' => true,
                     'attr' => [
@@ -60,7 +60,7 @@ class TechnicType extends AbstractType
                 'cons',
                 TextareaType::class,
                 [
-                    'label' => '🙁 limites / inconvénients  de la technique ?',
+                    'label' => '🙁 limites / inconvénients  de la solution ?',
                     'required'     => false,
                     'sanitize_html' => true,
                     'attr' => [
@@ -125,7 +125,7 @@ class TechnicType extends AbstractType
                 'status',
                 TextareaType::class,
                 [
-                    'label' => '🏗️ La technique est-elle déjà utilisée ?',
+                    'label' => '🏗️ La solution est-elle déjà utilisée ?',
                     'required'     => false,
                     'sanitize_html' => true,
                     'attr' => [

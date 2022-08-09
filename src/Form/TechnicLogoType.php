@@ -18,7 +18,7 @@ class TechnicLogoType extends AbstractType
             VichImageType::class,
 
             [
-                'label' => 'Vignette / logo pour représenter cette technique ?',
+                'label' => 'Vignette / logo pour représenter cette solution ?',
 
                 'attr' => [
 

@@ -14,7 +14,7 @@ class TechnicValidationType extends AbstractType
     {
 
         $builder->add('isAdminValidated', CheckboxType::class, [
-            'label'    => 'Valider cette technique sur le site ?',
+            'label'    => 'Valider cette solution sur le site ?',
             'required' => false,
         ]);
         

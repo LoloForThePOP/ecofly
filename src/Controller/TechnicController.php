@@ -70,7 +70,7 @@ class TechnicController extends AbstractController
 
             $this->addFlash(
                 'success fs-4',
-                "✅ La technique a été ajoutée avec succès <br> Merci pour votre aide 👍"
+                "✅ La solution a été ajoutée avec succès <br> Merci pour votre aide 👍"
             );
 
             return $this->redirectToRoute('show_technic', [
@@ -109,7 +109,7 @@ class TechnicController extends AbstractController
 
             $this->addFlash(
                 'success fs-4',
-                "✅ La présentation de la technique a été modifiée avec succès"
+                "✅ La présentation de la solution a été modifiée avec succès"
             );
 
             return $this->redirectToRoute('show_technic', [
@@ -134,7 +134,7 @@ class TechnicController extends AbstractController
     
                 $this->addFlash(
                     'success fade-out',
-                    "✅ Un logo a été ajouté pour la technique ".$technic->getName()."."
+                    "✅ Un logo a été ajouté pour la solution ".$technic->getName()."."
                 );
     
                 return $this->redirectToRoute(
@@ -169,11 +169,11 @@ class TechnicController extends AbstractController
                     
                     $receiver = $technic->getCreator()->getEmail();
         
-                    $mailer->send($sender, 'Flycore', $receiver, "Votre présentation de technique est validée sur Flycore.", "Votre présentation de technique a été validée par un membre de notre équipe. Merci pour votre participation sur le site 👍 <br><br>L'équipe Flycore.org.");
+                    $mailer->send($sender, 'Flycore', $receiver, "Votre présentation de solution est validée sur Flycore.", "Votre présentation de solution a été validée par un membre de notre équipe. Merci pour votre participation sur le site 👍 <br><br>L'équipe Flycore.org.");
     
                     $this->addFlash(
                         'success fade-out',
-                        "✅ La technique est validée pour apparaître sur le site"
+                        "✅ La solution est validée pour apparaître sur le site"
                     );
     
                 }

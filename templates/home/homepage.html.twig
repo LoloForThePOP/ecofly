@@ -9,7 +9,10 @@
   <link href="/css/show_more_less_button.css" rel="stylesheet">
 {% endblock %}
 
-{% block javascripts %}<script src="/js/show_more_less_button.js"></script>
+{% block javascripts %}
+
+  <script src="/js/show_more_less_button.js"></script>
+  
 {% endblock %}
 
 {% import "utilities/_macro_titled_projects_collection.html.twig" as display %} {# project presentation cards #}
@@ -60,7 +63,7 @@
 
             {% if user_technic_presentations | length > 0 %}
 
-              {{ displayTechnics.collection("Mes techniques présentées", user_technic_presentations | reverse, "hide-525") }} 
+              {{ displayTechnics.collection("Mes solutions présentées", user_technic_presentations | reverse, "hide-525") }} 
 
             {% endif %}
       
@@ -72,7 +75,7 @@
 
     <div class="container col-lg-12 col-xxl-9 px-0">
 
-      {{ displayTechnics.collection("Galerie des Techniques", technics | reverse, "", "hide-525") }}
+      {{ displayTechnics.collection("Galerie des Solutions", technics | reverse, "", "hide-525") }}
     
     </div>
 
