@@ -3,7 +3,7 @@
 
     {% if technic.pros is not empty %}
     
-        <div class="pros col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
+        <div class="technic-struct-container col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
 
             <div class="sm-border-none border rounded p-3 pb-1 h-100">
                 
@@ -23,7 +23,7 @@
 
     {% if technic.cons is not empty %}    
 
-        <div class="cons col-md-6 p-0">
+        <div class="technic-struct-container col-md-6 p-0">
 
             <div class="sm-border-none border rounded p-3 pb-1 h-100">
 
@@ -40,17 +40,5 @@
         </div>
     
     {% endif %}
-
-    <style>
-
-        .pros li:not(:last-child), .cons li:not(:last-child) {
-
-            margin-bottom : 10px;
-
-        }
-    
-    
-    </style>
-
 
 </div>

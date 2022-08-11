@@ -1,4 +1,25 @@
 
+
+
+
+
+.technic-struct-container li:not(:last-child), .technic-struct-container li:not(:last-child) {
+
+    margin-bottom : 10px;
+
+}
+
+
+.technic-struct-container.sources li {
+
+    margin-bottom : 0;
+
+}
+
+
+
+
+
 /* Each Structure Icon */
 
 .pp-struct-icon{
