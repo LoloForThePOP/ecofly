@@ -23,6 +23,7 @@
   <div class="page-container container-lg px-0 px-lg-3">
 
 
+
      <div id="homepage-jumbotron-struct-container" class="container col-xxl-11 px-0 px-md-4 px-lg-4">
 
         {% include "home/_jumbotron.html.twig" with {container_classes: ''} %}
@@ -78,6 +79,117 @@
       {{ displayTechnics.collection("Galerie des Solutions", technics | reverse, "", "hide-525") }}
     
     </div>
+
+    
+  
+    <div class="container col-lg-12 col-xxl-9 px-0">
+
+      <div id="key-figures" class="key-figures alert alert-success" role="alert">
+
+        <h4 class="text-center alert-heading my-4">👉 Chiffres Clés - le travail devant nous 😁</h4>
+
+        <hr>
+
+        <p class="text-center">Les émissions carbone générées par le secteur aéronautique représententeraient <b>à elles seules 2 à 3 % des émissions mondiales.</b> <br><span class="annotation">Source : OACI; ADEME (cité par  <a href="https://www.greenly.earth/blog-fr/empreinte-carbone-vol-en-avion" target="_blank" rel="noopener noreferrer">greenly.earth</a> )</span></p>
+
+        <p class="text-center">Ces émissions <b>risquent encore d’augmenter</b> avec la croissance du trafic aérien.<br>Elles pourraient atteindre <b> 5 %</b> si aucune action n’est entreprise. <br><span class="annotation">Source : GIEC (cité par  <a href="https://group.bnpparibas/actualite/quel-plan-de-vol-pour-une-aviation-durable" target="_blank">bnpparibas</a>)</span></p>
+
+        <hr>
+
+        <h5 class="text-center my-4">L'aviation <b>n'est vraiment pas</b> le meilleur élève ¯\_(ツ)_/¯</h5>
+
+
+        {# Table with its data source #}
+
+        <div class="d-flex justify-content-center">
+          
+          <figure class="text-center px-3 pt-2 pb-3 m-2 rounded bg-light">
+            
+            <table class="">
+              
+              <thead class="mb-3">
+                
+                <tr>
+                
+                <th class="has-text-align-left" data-align="left"><strong><span style="color:#20b2aa" class="has-inline-color">Mode de transport</span></strong></th><th class="has-text-align-left" data-align="left"><strong><span style="color:#20b2aa" class="has-inline-color">Émissions équivalentes carbone<br>(en g par km par passager)</span></strong></th></tr>
+              
+              </thead>
+              
+              <tbody>
+              
+                <tr><td class="text-left" data-align="left"><b>🛩  Avion</b></td><td class="has-text-align-left" data-align="left"><b>285</b></td>
+                
+                </tr>
+                
+                <tr><td class="has-text-align-left" data-align="left">🚙  Voiture "gourmande"</td><td class="has-text-align-left" data-align="left">158</td>
+                
+                
+                </tr>
+                
+                <tr><td class="has-text-align-left" data-align="left">🚗  Voiture "efficace" ou "petite"</td><td class="has-text-align-left" data-align="left">104</td></tr>
+              
+                <tr><td class="has-text-align-left" data-align="left">🛵  Moto / Scooter</td><td class="has-text-align-left" data-align="left">72</td>
+                </tr>
+              
+                <tr><td class="has-text-align-left" data-align="left">🚌  Bus</td><td class="has-text-align-left" data-align="left">68</td>
+                </tr>
+              
+                <tr><td class="has-text-align-left" data-align="left">🚅  Train</td><td class="has-text-align-left" data-align="left">14</td></tr>
+              
+              </tbody>
+            
+            </table>
+            
+          </figure>
+
+
+        </div>
+        <p class="text-center"><span class="annotation">Sources : European Environment Agency (2014)  (cité par  <a href="https://www.eea.europa.eu/media/infographics/co2-emissions-from-passenger-transport/" target="_blank" rel="noopener noreferrer">EEA report</a>)</span></p>
+
+
+        {# what to do #}
+
+
+        <hr>
+
+        <p class="text-center"><b>Le secteur doit réduire son impact carbone d'environ 38 % entre 2019 et 2035 pour atteindre les objectifs de réduction.</b> <br><span class="annotation">Source : Science Based Targets (SBTi) - Aviation Guidance (août 2021) (cité par <a href="https://group.bnpparibas/actualite/quel-plan-de-vol-pour-une-aviation-durable" target="_blank">bnpparibas</a>)</span></p>
+
+        <hr>
+
+        <p class="text-center my-4">👉 Donc il y a du pain sur la planche. <b>Aidez-nous à répertorier les solutions envisageables</b> 🌳</p>
+
+
+
+
+      </div>
+          
+      <style>
+
+
+        .key-figures{
+
+          background-color: #f3fffa;
+        }
+
+
+        .key-figures p{
+
+          font-size: 18px;
+        }
+
+
+        .key-figures .annotation{
+
+          font-size: 14px;
+        }
+      
+      
+      
+      </style>  
+      
+    </div>
+
+
 
     {# {{ display.collection("Galerie des Projets", lastInsertedProjects, "", "hide-525") }} #}
 

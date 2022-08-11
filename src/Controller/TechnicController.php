@@ -40,7 +40,7 @@ class TechnicController extends AbstractController
                 // Time protection
                 'antispam_time'     => true,
                 'antispam_time_min' => 3,
-                'antispam_time_max' => 3600,
+                'antispam_time_max' => 10000,
             )
         );
 
