@@ -89,15 +89,21 @@
 
         {% if isCreator or isAdmin %}
             
+            {# Warning : Very dirty code reusage #}
             {# Switch Between Edition Mode and Consultation Mode Button #}
 
-            <button id="pp-switch-edit-consult-mode" class="edition-mode" title="Switch between edition mode and consultation mode">
+            <a href="{{ path( 'update_technic', {'id': technic.id} ) }}">
 
-                <img id="pp-consult-icon" class="pp-edition-mode" src="{{ asset('eye.svg', 'pp_wysiwyg')}}" height="30" width="30"  alt="eye icon">
+                <button id="pp-switch-edit-consult-mode" class="edition-mode" title="Switch between edition mode and consultation mode">
 
-                <img id="pp-edit-icon" class="pp-consultation-mode" src="{{ asset('pen.svg', 'pp_wysiwyg')}}" height="30" width="30"  alt="pen icon">
+                    {# <img id="pp-consult-icon" class="pp-edition-mode" src="{{ asset('eye.svg', 'pp_wysiwyg')}}" height="30" width="30"  alt="eye icon"> #}
 
-            </button>
+                    <img id="pp-edit-icon" class="{# pp-consultation-mode #}" src="{{ asset('pen.svg', 'pp_wysiwyg')}}" height="30" width="30"  alt="pen icon">
+
+                </button>
+                
+            
+            </a>
         
         {% endif %}
 
