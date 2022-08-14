@@ -106,7 +106,7 @@ class CategoryController extends AbstractController
      * @Route("/admin/categories/manage", name="manage_categories") 
      * 
      */
-    public function adminManageCategories(Request $request, CategoryRepository $categoryRepository, EntityManagerInterface $manager)
+    public function adminManageCategories(CategoryRepository $categoryRepository)
     {
 
         $categories= $categoryRepository->findBy([], ['position' => 'ASC']);

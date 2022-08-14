@@ -140,6 +140,11 @@ class Technic implements Serializable
      */
     private $status;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="technics")
+     */
+    private $categories;
+
 
 
 
@@ -150,6 +155,7 @@ class Technic implements Serializable
         $this->createdAt = new \DateTimeImmutable();
         $this->isAdminValidated = false;
         $this->slides = new ArrayCollection();
+        $this->categories = new ArrayCollection();
 
     }
 
@@ -438,6 +444,30 @@ class Technic implements Serializable
     public function setStatus(?string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Category>
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Category $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->categories->removeElement($category);
 
         return $this;
     }

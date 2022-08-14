@@ -1,0 +1,170 @@
+
+{% block title %}Catégories de la technique{% endblock %}
+
+{% block stylesheets %}
+
+    {% include "project_presentation/edit/categories/_css_inclusions.html.twig" %}
+
+{% endblock %}
+
+{% block javascripts %}
+
+    {% include "technic/edit/categories/_js_inclusions.html.twig" with { 'includeSortable': true } %}
+
+{% endblock %}
+
+
+
+{% extends 'base.html.twig' %}
+
+    {% block body %}
+
+        <div class="edit-structure-container container">
+
+            <div class="main-title-container">
+
+                <!-- ui Page Title -->	
+                
+                <h4 class="main-title h3 me-3">
+
+                    Sélection de Catégorie(s) pour la Technique {{technic.getName}}
+
+                </h4>
+
+               
+            </div>
+
+
+            <div class="main-content-container">
+                    
+                <div id="cat-grid" class="col-xxl-10 clearfix">
+
+                    {% include "project_presentation/edit/categories/_categories_list.html.twig" %}
+                
+                </div>
+
+
+                <style> /* Overide some embeded default spacings */
+
+                    .main-content-container {
+                        margin-bottom: 25px; /* Reduced default margin to reduce result button vertical spacing */
+                    }
+
+                    .edit-structure-container {
+                        padding-top: 20px !important; /* Reduced default padding to see keywords bellow */
+                    }
+
+                    #keywords-struct-container{
+                        margin-top: 20px;
+                    }
+
+                </style>
+        
+
+            </div>
+
+            {# End of page action possibilities #}
+
+                <div class="action-buttons-container">
+
+                    {# See Result (at the right anchor) Button #}
+        
+                    <a 
+                    
+                        class="text-decoration-none text-white" 
+                        href="{{path('show_technic', {'id': technic.id })}}">
+
+                        <button type="button" class="btn btn-lg btn-see-result mb-4 me-3 ">Résultat</button>
+
+                    </a>
+                    
+                </div>
+
+        </div>
+    
+        {# styles for this skeleton #}
+    
+        <style>
+    
+            .edit-structure-container{
+    
+                padding-top: 60px;
+                padding-bottom: 60px;
+    
+            }
+    
+            .edit-structure-container .main-title-container {
+    
+                margin-bottom: 20px;
+    
+            }
+    
+            .edit-structure-container .main-title {
+    
+                display: inline-block;
+                font-weight: bold;
+    
+            }
+
+            .main-content-container{
+                margin-bottom: 42px;
+            }
+    
+            .info-box{
+                background-color: lavender;
+                padding: 8px 14px;
+                border-left: 5px solid blue;
+                font-size: 1em;
+                margin-top: 8px;
+            }
+    
+            .info-box ul{
+            
+                padding-left: 25px;
+                margin-bottom: 0;
+            }
+    
+            
+    
+            @media (max-width: 768px) {
+        
+                .edit-structure-container{
+    
+                    padding-top: 29px;
+                    padding-left: 15px;
+    
+                }
+                    
+                .edit-structure-container .main-title-container {
+
+                    margin-bottom: 20px;
+
+                }
+                          
+                .info-box{
+                    margin-left: 20px;
+                }
+    
+            }
+    
+            
+            @media (max-width: 576px) {
+
+                .edit-structure-container{
+    
+                    padding-left: 5px;
+                    padding-right: 5px;
+    
+                }
+
+                .main-title{
+                    font-size: 1.05em;
+                }
+
+            }
+    
+    
+        </style>
+
+    {% endblock %}
+

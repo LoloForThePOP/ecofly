@@ -94,12 +94,18 @@ class Category
      */
     public $imageFile;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Technic::class, mappedBy="categories")
+     */
+    private $technics;
+
 
 
 
     public function __construct()
     {
         $this->projects = new ArrayCollection();
+        $this->technics = new ArrayCollection();
     }
 
 
@@ -232,6 +238,33 @@ class Category
     public function removeProject(PPBase $project): self
     {
         $this->projects->removeElement($project);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Technic>
+     */
+    public function getTechnics(): Collection
+    {
+        return $this->technics;
+    }
+
+    public function addTechnic(Technic $technic): self
+    {
+        if (!$this->technics->contains($technic)) {
+            $this->technics[] = $technic;
+            $technic->addCategory($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTechnic(Technic $technic): self
+    {
+        if ($this->technics->removeElement($technic)) {
+            $technic->removeCategory($this);
+        }
 
         return $this;
     }
