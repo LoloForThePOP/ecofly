@@ -1,7 +1,7 @@
 
 <div class="row mb-2 mb-md-3 mb-lg-5">
 
-    {% if technic.notes is not empty %}
+    
     
         <div class="technic-struct-container col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
 
@@ -9,9 +9,17 @@
                 
                 <h4 class="mb-3">🤔 Le saviez-vous ?</h4>
 
-                <div class="notes d-flex flex-column align-items-center ps-md-3" style="min-height:75%;">
+                <div class="notes d-flex flex-column justify-content-center ps-md-3" style="min-height:75%;">
+
+                    {% if technic.notes is not empty %}
                 
-                    {{ technic.notes | raw }}
+                        {{ technic.notes | raw }}
+
+                    {% else %}
+                        
+                        À compléter.
+
+                    {% endif %}
 
                 </div>
             
@@ -19,9 +27,8 @@
 
         </div>
 
-    {% endif %}
 
-    {% if technic.status is not empty %}    
+     
 
         <div class="col-md-6 p-0">
 
@@ -30,8 +37,16 @@
                 <h4 class="mb-3">🚧 Utilisation actuelle</h4>
 
                 <div class="sources ps-md-3">
+
+                    {% if technic.status is not empty %}   
                 
-                    {{ technic.status | raw }}
+                        {{ technic.status | raw }}
+
+                    {% else %}
+                        
+                        À compléter.
+
+                    {% endif %}
 
                 </div>
 
@@ -39,7 +54,6 @@
 
         </div>
     
-    {% endif %}
 
     <style>
 

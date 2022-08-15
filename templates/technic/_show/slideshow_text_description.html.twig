@@ -126,15 +126,23 @@
 
     {% endif %}
 
-    {% if technic.textDescription is not empty %}    
+        
 
         <div class="technic-struct-container col-md-6 p-0">
 
             <div class="sm-border-none border rounded p-3 h-100 d-flex flex-column align-items-center justify-content-center">
 
                 <div class="ps-md-2">
-                
-                    {{technic.textDescription | raw}}
+
+                    {% if technic.textDescription is not empty %}
+                    
+                        {{technic.textDescription | raw}}
+
+                    {% else %}
+                        
+                        .
+
+                    {% endif %}
 
                 </div>
 
@@ -142,6 +150,5 @@
 
         </div>
     
-    {% endif %}
 
 </div>

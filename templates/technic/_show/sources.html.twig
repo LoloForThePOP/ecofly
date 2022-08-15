@@ -21,7 +21,7 @@
 
     {% endif %} #}
 
-    {% if technic.sources is not empty %}    
+     
 
         <div class="technic-struct-container sources col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0">
 
@@ -30,8 +30,16 @@
                 <h4 class="mb-3">🧐 Sources</h4>
 
                 <div class="sources ps-md-3" style="word-break: break-all;">
+
+                    {% if technic.sources is not empty %}   
                 
-                    {{ technic.sources | raw }}
+                        {{ technic.sources | raw }}
+
+                    {% else %}
+                        
+                        
+                    
+                    {% endif %}
 
                 </div>
 
@@ -39,7 +47,7 @@
 
         </div>
     
-    {% endif %}
+    
 
     <style>
 
