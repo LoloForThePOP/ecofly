@@ -74,9 +74,17 @@
 
 
 
+    <h3 class="big-part-title text-center mb-5">Galerie des Solutions</h3>
+
+
+
     <div class="container col-lg-12 col-xxl-9 px-0">
 
-      {{ displayTechnics.collection("Galerie des Solutions", technics | reverse, "", "hide-525") }}
+      {% for category in categories %}
+
+        {{ displayTechnics.collection(category.descriptionFr, category.technics | reverse, "", "hide-525") }}
+        
+      {% endfor %}
     
     </div>
 

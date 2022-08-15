@@ -199,6 +199,7 @@ class TechnicController extends AbstractController
                 'technicLogoForm' => $technicLogoForm->createView(),
                 'technicValidationForm' => $technicValidationform->createView(),
                 'id' => $technic->getId(),
+                'technicCategories' => $technic->getCategories(),
             ]);
 
         }

@@ -1,6 +1,7 @@
 
 .technic-card{
 
+    position: relative;
     width : 210px;
     height : 250px;
 }
@@ -40,6 +41,38 @@
     
     font-weight: bold;
 
+}
+
+.help-us-stamp{
+    position: absolute;
+	color: #08462F;
+	border: 0.5rem solid #35679D;
+	transform: rotate(-14deg);
+    top: 25%;
+    left: 15%;
+    background-color: white;
+    font-weight: bold;
+    padding: 7px;
+    border-radius: 8px;
+  
+}
+
+
+.edit-page-icon{
+
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 10px;
+    z-index: 2;
+  
+}
+
+
+.edit-page-icon:hover{
+
+    background-color: beige;
+  
 }
 
 

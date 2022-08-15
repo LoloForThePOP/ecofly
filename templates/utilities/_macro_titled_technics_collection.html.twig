@@ -46,7 +46,32 @@
                         </div>
 
                     </div>
+                    
 
+                    {% if item.sources =="<p>Reste à compléter.</p>" %}
+                        
+                        <div class="help-us-stamp">
+
+                            Aide Bienvenue
+                        
+                        </div>                   
+                    
+                    {% endif %}
+
+                    {% if is_granted('ROLE_ADMIN') %}
+                    
+                        <a href="{{ path('update_technic', {'id': item.id}) }}">
+                            
+                            <div class="edit-page-icon">
+
+                                ✍️
+                            
+                            </div>
+                        
+                        </a>
+                        
+                    {% endif %}
+                    
                 </div>
 
             </a>

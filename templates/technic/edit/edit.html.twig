@@ -196,9 +196,14 @@
 
                     <div class="border border-primary rounded mb-4 p-3">
 
+
                         <a href="{{path('select_technic_categories', {'id': id})}}">
                         
-                            <button type="button" class="btn btn-light fw-normal me-3"><span style="display: inline-block;transform: matrix(-1, 0, 0, 1, 0, 0);">🐈</span> Choisir une catégorie</button>
+                            <button type="button" class="btn btn-light fw-normal me-3"><span style="display: inline-block;transform: matrix(-1, 0, 0, 1, 0, 0);">🐈</span> {% if technicCategories | length == 0 %}<span class="text-danger font-weight-bold">!! Attention aucune catégorie choisie !! 👉</span>{% endif %} Choisir une catégorie</button>
+
+                            
+
+                            
                             
                         </a>
 
