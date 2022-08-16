@@ -33,98 +33,101 @@
     
     {% endif %}
 
-    {% if countSlides > 0 %}
+    <div class="col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
 
-        {% set slides = technic.slides %}
-    
-        <div class="col-md-6 p-0 pe-md-3 ps-md-2 mb-2 mb-md-0"> {# wrapping container to add a gutter #}
+        <div class="d-flex flex-column justify-content-center sm-border-none border rounded p-3 h-100">
+                
+            {% if countSlides > 0 %}
 
-            <div class="d-flex flex-column justify-content-center sm-border-none border rounded p-3 h-100">
+                {% set slides = technic.slides %}
+        
 
-                <div id="slideshowTechnics" class="carousel slide" data-bs-interval="false">
+                    <div id="slideshowTechnics" class="carousel slide" data-bs-interval="false">
 
-                    <div class="carousel-inner">
+                        <div class="carousel-inner">
 
-                        {% for slide in slides | reverse %}
+                            {% for slide in slides | reverse %}
 
-                            <div class="carousel-item {% if loop.first %}active{% endif %}">
+                                <div class="carousel-item {% if loop.first %}active{% endif %}">
 
-                                {% if slide.type =="image" %}
+                                    {% if slide.type =="image" %}
 
-                                    <img src="{{ vich_uploader_asset(slide) }}" class="d-block" alt="Image illustrating a technic to reduce airplane gas emissions">
+                                        <img src="{{ vich_uploader_asset(slide) }}" class="d-block" alt="Image illustrating a technic to reduce airplane gas emissions">
 
-                                {% elseif slide.type == "youtube_video" %}
+                                    {% elseif slide.type == "youtube_video" %}
 
-                                    <iframe id="{{slide.id}}" width="100%" height="100%" src="https://www.youtube.com/embed/{{slide.address}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                                
-                                {% endif %}
-
-                            </div>
-                            
-                        {% endfor %}
-
-
-                        <style>
-
-                            .carousel-item{
-
-
-                                height: 350px;
-                                position: relative;
-
-                            }
-
-                            .carousel-item img { /* vertically center image */
-                                max-height: 100%;
-                                max-width: 100%;
-                                width: auto;
-                                height: auto;
-                                position: absolute;
-                                top: 0;
-                                bottom: 0;
-                                left: 0;
-                                right: 0;
-                                margin: auto;
-                                border-radius: 3px;
-                            }
-
-                                                        
-                            @media screen and (max-width: 580px) {
-
+                                        <iframe id="{{slide.id}}" width="100%" height="100%" src="https://www.youtube.com/embed/{{slide.address}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                                     
-                                .carousel-item {
-                                    height: 190px;
-                                }
+                                    {% endif %}
+
+                                </div>
                                 
-                            }
+                            {% endfor %}
 
 
-                            
-                        </style>
+                            <style>
+
+                                .carousel-item{
+
+
+                                    height: 350px;
+                                    position: relative;
+
+                                }
+
+                                .carousel-item img { /* vertically center image */
+                                    max-height: 100%;
+                                    max-width: 100%;
+                                    width: auto;
+                                    height: auto;
+                                    position: absolute;
+                                    top: 0;
+                                    bottom: 0;
+                                    left: 0;
+                                    right: 0;
+                                    margin: auto;
+                                    border-radius: 3px;
+                                }
+
+                                                            
+                                @media screen and (max-width: 580px) {
+
+                                        
+                                    .carousel-item {
+                                        height: 190px;
+                                    }
+                                    
+                                }
+
+
+                                
+                            </style>
+
+                        </div>
+
+                        {# {% if countSlides > 1 %}
+
+                            <button class="carousel-control-prev" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+
+                            <button class="carousel-control-next" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        
+                        {% endif %} #}
 
                     </div>
 
-                    {# {% if countSlides > 1 %}
-
-                        <button class="carousel-control-prev" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-
-                        <button class="carousel-control-next" type="button" data-bs-target="#slideshowTechnics" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
                     
-                    {% endif %} #}
 
-                </div>
-            
-            </div>
-
+            {% endif %}
+        
         </div>
 
-    {% endif %}
+    </div>
 
         
 

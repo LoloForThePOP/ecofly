@@ -204,7 +204,7 @@ class TechnicController extends AbstractController
 
         }
 
-        return $this->render('technic/edit/edit/.html.twig', [
+        return $this->render('technic/edit/edit.html.twig', [
             'form' => $form->createView(),
             'instance' => 'update',
         ]);

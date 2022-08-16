@@ -30,7 +30,7 @@
 
     <div class=" {{isCreator or isAdmin ? 'in-edition-mode'}} tp-container page-container container col-lg-11 col-xxl-9 px-0 pb-5">
 
-        {% if technic.sources =="<p>À compléter.</p>" %}
+        {% if technic.sources is empty %}
                         
             <div class="container col-lg-12 col-xxl-9 px-0 mb-md-4 mb-lg-5">
 
