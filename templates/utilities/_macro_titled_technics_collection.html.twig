@@ -35,8 +35,7 @@
                             </div>       
 
                         {% endif %}
-
-                        
+   
                     </div>
 
                     <div class="other-info-container">
@@ -46,6 +45,7 @@
                         </div>
 
                     </div>
+
                     
 
                     {% if item.sources is empty %}
@@ -59,19 +59,14 @@
                     {% endif %}
 
                     {% if is_granted('ROLE_ADMIN') %}
-                    
-                        <a href="{{ path('update_technic', {'id': item.id}) }}">
-                            
-                            <div class="edit-page-icon">
 
-                                ✍️
                             
-                            </div>
+                        <div href="{{ path('update_technic', {'id': item.id}) }}" class="edit-page-icon">✍️</div>
                         
-                        </a>
                         
                     {% endif %}
-                    
+                             
+
                 </div>
 
             </a>
