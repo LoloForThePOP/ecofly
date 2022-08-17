@@ -68,17 +68,6 @@ class Problem
     public $logoFile;
 
 
-
-    /**
-     * @ORM\OneToMany(targetEntity=Slide::class, mappedBy="problem")
-     */
-    private $harms;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Technic::class, inversedBy="couldReduceProblems")
-     */
-    private $solutions;
-
     /**
      * @ORM\Column(type="datetime_immutable")
      */
@@ -159,59 +148,7 @@ class Problem
         return $this;
     }
 
-    /**
-     * @return Collection<int, Slide>
-     */
-    public function getHarms(): Collection
-    {
-        return $this->harms;
-    }
 
-    public function addHarm(Slide $harm): self
-    {
-        if (!$this->harms->contains($harm)) {
-            $this->harms[] = $harm;
-            $harm->setProblem($this);
-        }
-
-        return $this;
-    }
-
-    public function removeHarm(Slide $harm): self
-    {
-        if ($this->harms->removeElement($harm)) {
-            // set the owning side to null (unless already changed)
-            if ($harm->getProblem() === $this) {
-                $harm->setProblem(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Technic>
-     */
-    public function getSolutions(): Collection
-    {
-        return $this->solutions;
-    }
-
-    public function addSolution(Technic $solution): self
-    {
-        if (!$this->solutions->contains($solution)) {
-            $this->solutions[] = $solution;
-        }
-
-        return $this;
-    }
-
-    public function removeSolution(Technic $solution): self
-    {
-        $this->solutions->removeElement($solution);
-
-        return $this;
-    }
 
     public function getCreatedAt(): ?\DateTimeImmutable
     {

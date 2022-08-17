@@ -100,12 +100,6 @@ class Slide
      */
     private $technicPresentation;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=Problem::class, inversedBy="harms")
-     */
-    private $problem;
-
-
 
 
 
@@ -252,15 +246,4 @@ class Slide
         return $this;
     }
 
-    public function getProblem(): ?Problem
-    {
-        return $this->problem;
-    }
-
-    public function setProblem(?Problem $problem): self
-    {
-        $this->problem = $problem;
-
-        return $this;
-    }
 }
