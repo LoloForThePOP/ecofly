@@ -125,6 +125,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $createdTechnics;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Problem::class, mappedBy="Creator")
+     */
+    private $problems;
+
 
 
     public function __construct()
@@ -140,6 +145,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->createdConversations = new ArrayCollection();
         $this->createdTechnics = new ArrayCollection();
         $this->technics = new ArrayCollection();
+        $this->problems = new ArrayCollection();
 
     }
 
@@ -482,6 +488,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($createdTechnic->getCreator() === $this) {
                 $createdTechnic->setCreator(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Problem>
+     */
+    public function getProblems(): Collection
+    {
+        return $this->problems;
+    }
+
+    public function addProblem(Problem $problem): self
+    {
+        if (!$this->problems->contains($problem)) {
+            $this->problems[] = $problem;
+            $problem->setCreator($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProblem(Problem $problem): self
+    {
+        if ($this->problems->removeElement($problem)) {
+            // set the owning side to null (unless already changed)
+            if ($problem->getCreator() === $this) {
+                $problem->setCreator(null);
             }
         }
 

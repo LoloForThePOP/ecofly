@@ -61,3 +61,12 @@ vich_uploader:
             inject_on_load: true
             delete_on_update: true
             delete_on_remove: true
+            
+        problem_logo_image:
+                    
+            uri_prefix: /media/uploads/problems/logo
+            upload_destination: '%kernel.project_dir%/public/media/uploads/problems/logo'
+            
+            inject_on_load: true
+            delete_on_update: true
+            delete_on_remove: true

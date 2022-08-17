@@ -10,6 +10,7 @@ use App\Entity\Slide;
 use App\Entity\PPBase;
 use App\Entity\Message;
 use App\Entity\Persorg;
+use App\Entity\Problem;
 use App\Entity\Technic;
 use App\Entity\Category;
 use App\Entity\Document;
@@ -817,13 +818,27 @@ class FakeDataFixtures extends Fixture
             $technic->setName($faker->sentence())
                     ->setTextDescription($faker->paragraphs(2, true))
                     ->setPros($faker->paragraphs(3, true))
-                    ->setCons($faker->paragraphs(3, true));
+                    ->setCons($faker->paragraphs(3, true))
+                    ->setCreator($users[array_rand($users)]);
+
+            $manager->persist($technic);
+
+        }
+
+        // Problems Creation
+        
+        for ($l = 0; $l < 12; $l++) {
+
+            $problem = new Problem();
+
+            $problem->setName($faker->sentence())
+                    ->setTextDescription($faker->paragraphs(2, true))
+                    ->setCreator($users[array_rand($users)]);
 
             $manager->persist($technic);
 
         }
         
-
         $manager->flush();
 
     }

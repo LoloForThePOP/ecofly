@@ -26,6 +26,10 @@
     {% if technic.getCreator == app.user %} {% set isCreator = true %} {% endif %}
 
 
+
+    {% set emptyAreaMessage = 'Cette partie est vide ! Votre aide est bienvenue.' %}
+
+
     
 
     <div class=" {{isCreator or isAdmin ? 'in-edition-mode'}} tp-container page-container container col-lg-11 col-xxl-9 px-0 pb-5">

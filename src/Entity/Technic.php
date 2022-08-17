@@ -145,6 +145,11 @@ class Technic implements Serializable
      */
     private $categories;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Problem::class, mappedBy="solutions")
+     */
+    private $couldReduceProblems;
+
 
 
 
@@ -156,6 +161,7 @@ class Technic implements Serializable
         $this->isAdminValidated = false;
         $this->slides = new ArrayCollection();
         $this->categories = new ArrayCollection();
+        $this->couldReduceProblems = new ArrayCollection();
 
     }
 
@@ -468,6 +474,33 @@ class Technic implements Serializable
     public function removeCategory(Category $category): self
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Problem>
+     */
+    public function getCouldReduceProblems(): Collection
+    {
+        return $this->couldReduceProblems;
+    }
+
+    public function addCouldReduceProblem(Problem $couldReduceProblem): self
+    {
+        if (!$this->couldReduceProblems->contains($couldReduceProblem)) {
+            $this->couldReduceProblems[] = $couldReduceProblem;
+            $couldReduceProblem->addSolution($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCouldReduceProblem(Problem $couldReduceProblem): self
+    {
+        if ($this->couldReduceProblems->removeElement($couldReduceProblem)) {
+            $couldReduceProblem->removeSolution($this);
+        }
 
         return $this;
     }
