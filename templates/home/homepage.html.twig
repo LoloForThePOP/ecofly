@@ -73,7 +73,7 @@
 
     <div class="container col-lg-12 col-xxl-9 px-0">
 
-      {% for category in categories %}
+      {% for category in categories | sort((a, b) => a.position <=> b.position) %}
 
         {{ displayTechnics.collection(category.descriptionFr, category.technics | reverse, "", "hide-525") }}
         
