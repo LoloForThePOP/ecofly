@@ -83,6 +83,19 @@ class TechnicType extends AbstractType
             )
 
             ->add(
+                'conclusion',
+                TextareaType::class,
+                [
+                    'label' => '😙 Conclusion / utile à retenir',
+                    'required'     => false,
+                    'sanitize_html' => true,
+                    'attr' => [
+                        'class' => "tinymceProsCons",
+                    ],
+                ]
+            )
+
+            ->add(
                 'sources',
                 TextareaType::class,
                 [

@@ -96,7 +96,7 @@ class Technic implements Serializable
     private $isAdminValidated;
 
     /**
-     * @ORM\OneToMany(targetEntity=Slide::class, mappedBy="technicPresentation")
+     * @ORM\OneToMany(targetEntity=Slide::class, mappedBy="technicPresentation", cascade={"remove"})
      */
     private $slides;
 
@@ -144,6 +144,11 @@ class Technic implements Serializable
      * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="technics")
      */
     private $categories;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $conclusion;
 
 
 
@@ -470,6 +475,18 @@ class Technic implements Serializable
     public function removeCategory(Category $category): self
     {
         $this->categories->removeElement($category);
+
+        return $this;
+    }
+
+    public function getConclusion(): ?string
+    {
+        return $this->conclusion;
+    }
+
+    public function setConclusion(?string $conclusion): self
+    {
+        $this->conclusion = $conclusion;
 
         return $this;
     }
