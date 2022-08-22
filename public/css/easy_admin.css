@@ -11,3 +11,15 @@
 	text-overflow: ellipsis;
 
 }
+
+#header-logo .logo{
+	display: none !important;
+}
+
+#header-logo a{
+	text-align: center;
+}
+
+#header-logo a:hover{
+	background-color: aliceblue;
+}

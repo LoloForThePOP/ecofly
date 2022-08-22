@@ -11,65 +11,62 @@
                 
             {% for item in items %}
 
-            <a href="{{path('show_technic', {'id': item.id})}}" class="text-decoration-none ">
+                <div class="technic-card border mb-3 pt-2">            
+                    
+                    <a href="{{path('show_technic', {'id': item.id})}}" class="text-decoration-none ">
 
-                <div class="technic-card border mb-3 pt-2">
+                        <div class="image-container d-flex justify-content-center align-items-center px-4 mb-2">
 
-                    <div class="image-container d-flex justify-content-center align-items-center px-4 mb-2">
+                            {% if item.logo is not empty %}
 
-                        {% if item.logo is not empty %}
-
-                            <img class="thumbnail" src="{{ vich_uploader_asset(item) }}" alt="Technic Thumbnail">
-                            
-                
-                        {% else %} {# no thumbnail : default avatar #}
-
-                            <div class="avatar-square-rounded avatar-80 mx-auto" style="background-color: {{ random (defaultThumbnailBG) }} !important;" >
+                                <img class="thumbnail" src="{{ vich_uploader_asset(item) }}" alt="Technic Thumbnail">
                                 
-                                <span class="avatar-initial avatar-initial-80">
+                    
+                            {% else %} {# no thumbnail : default avatar #}
 
-                                {{ item.name | slice (0,1) | upper }}
+                                <div class="avatar-square-rounded avatar-80 mx-auto" style="background-color: {{ random (defaultThumbnailBG) }} !important;" >
+                                    
+                                    <span class="avatar-initial avatar-initial-80">
 
-                                </span>
+                                    {{ item.name | slice (0,1) | upper }}
 
-                            </div>       
+                                    </span>
 
-                        {% endif %}
-   
-                    </div>
+                                </div>       
 
-                    <div class="other-info-container">
-
-                        <div class="name">
-                            {{ item.name[:1] | upper ~ item.name[1:] | slice(0, 63)}}
+                            {% endif %}
+    
                         </div>
 
-                    </div>
+                        <div class="other-info-container">
 
-                    
+                            <div class="name">
+                                {{ item.name[:1] | upper ~ item.name[1:] | slice(0, 63)}}
+                            </div>
 
-                    {% if item.sources is empty %}
+                        </div>
+
                         
-                        <div class="help-us-stamp">
 
-                            Aide Bienvenue
+                        {% if item.sources is empty %}
+                            
+                            <div class="help-us-stamp">
+
+                                Aide Bienvenue
+                            
+                            </div>                   
                         
-                        </div>                   
-                    
-                    {% endif %}
-{# 
+                        {% endif %}
+
+                    </a>
+
                     {% if is_granted('ROLE_ADMIN') %}
 
-                            
-                        <div href="{{ path('update_technic', {'id': item.id}) }}" class="edit-page-icon">✍️</div>
-                        
+                        <span class="edit-page-icon"><a href="{{ path('update_technic', {'id': item.id}) }}">✍️</a></span>
                         
                     {% endif %}
-                              #}
 
                 </div>
-
-            </a>
 
             {% endfor %}
 
