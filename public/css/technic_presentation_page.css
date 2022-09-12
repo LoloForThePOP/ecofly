@@ -1,11 +1,15 @@
 
 
-
-
-
 .technic-struct-container li:not(:last-child), .technic-struct-container li:not(:last-child) {
 
     margin-bottom : 10px;
+
+}
+
+/* Nested Lists */
+.technic-struct-container li ul {
+
+    margin-top : 8px;
 
 }
 
