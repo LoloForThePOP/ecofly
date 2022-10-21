@@ -126,7 +126,7 @@ class TechnicType extends AbstractType
                     'label' => '🌳 Pourcentage de réduction des émissions estimé (entre 1 et 100)',
                     'required'     => false,
                     'attr'     => array(
-                        'min'  => 1,
+                        'min'  => 0,
                         'max'  => 100,
                         'step' => 1,
                     ),
