@@ -16,6 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -25,7 +26,7 @@ class TechnicController extends AbstractController
     /**
      * @Route("/technic/new", name="new_technic")
      */
-    public function new(Request $request, EntityManagerInterface $manager, MailerService $mailer): Response
+    public function new(Request $request, EntityManagerInterface $manager, MailerService $mailer, SluggerInterface $slugger): Response
     {
 
         $this->denyAccessUnlessGranted('ROLE_USER');
@@ -49,6 +50,7 @@ class TechnicController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $technic->setCreator($this->getUser());
+            $technic->setNameSlug(strtolower($slugger->slug($technic->getName())));
 
             $manager->persist($technic);
             $manager->flush();
@@ -62,7 +64,7 @@ class TechnicController extends AbstractController
             $emailParameters=[
 
                 "techName" => $technic->getName(),
-                "address" => $this->generateUrl('show_technic', ["id"=>$technic->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
+                "address" => $this->generateUrl('show_technic_by_slug', ["nameSlug"=>$technic->getNameSlug()], UrlGeneratorInterface::ABSOLUTE_URL),
                 
             ];
 
@@ -73,9 +75,9 @@ class TechnicController extends AbstractController
                 "✅ La solution a été ajoutée avec succès <br> Merci pour votre aide 👍"
             );
 
-            return $this->redirectToRoute('show_technic', [
+            return $this->redirectToRoute('show_technic_by_slug', [
 
-                'id' => $technic->getId(),
+                'nameSlug' => $technic->getNameSlug(),
 
             ]);
 
@@ -112,7 +114,7 @@ class TechnicController extends AbstractController
                 "✅ La présentation de la solution a été modifiée avec succès"
             );
 
-            return $this->redirectToRoute('show_technic', [
+            return $this->redirectToRoute('show_technic_by_id', [
                 'id' => $technic->getId(),
             ]);
 
@@ -138,11 +140,11 @@ class TechnicController extends AbstractController
                 );
     
                 return $this->redirectToRoute(
-                    'show_technic',
+                    'show_technic_by_slug',
     
                     [
     
-                        'id' => $technic->getId(),
+                        'nameSlug' => $technic->getNameSlug(),
     
                     ]
     
@@ -181,11 +183,11 @@ class TechnicController extends AbstractController
     
     
                 return $this->redirectToRoute(
-                    'show_technic',
+                    'show_technic_by_slug',
     
                     [
     
-                        'id' => $technic->getId(),
+                        'nameSlug' => $technic->getNameSlug(),
     
                     ]
     
@@ -214,7 +216,8 @@ class TechnicController extends AbstractController
 
 
     /**
-     * @Route("/technic/{id}/show", name="show_technic")
+     * @Route("/technic/show/{nameSlug}", name="show_technic_by_slug")
+     * @Route("/technic/show-by-id/{id}")
      */
     public function show(Technic $technic, Request $request,  EntityManagerInterface $manager, TreatItem $specificTreatments, ImageResizer $imageResizer): Response
     {
@@ -244,11 +247,11 @@ class TechnicController extends AbstractController
                 );
 
                 return $this->redirectToRoute(
-                    'show_technic',
+                    'show_technic_by_slug',
     
                     [
     
-                        'id' => $technic->getId(),
+                        'nameSlug' => $technic->getNameSlug(),
     
                     ]
 
@@ -280,11 +283,11 @@ class TechnicController extends AbstractController
                 );
 
                 return $this->redirectToRoute(
-                    'show_technic',
+                    'show_technic_by_slug',
     
                     [
     
-                        'id' => $technic->getId(),
+                        'nameSlug' => $technic->getNameSlug(),
     
                     ]
 

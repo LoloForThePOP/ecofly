@@ -7,11 +7,13 @@ use App\Service\CacheThumbnail;
 use Doctrine\ORM\EntityManager;
 use App\Repository\PlaceRepository;
 use App\Repository\PPBaseRepository;
+use App\Repository\TechnicRepository;
 use App\Repository\CategoryRepository;
 use Algolia\SearchBundle\SearchService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 
@@ -30,8 +32,20 @@ class OneShotController extends AbstractController
      * @Route("/admin/one-shot", name="one_shot")
      * 
      */
-    public function doAction(PPBaseRepository $repo, PlaceRepository $placesRepo, CategoryRepository $categoriesRepo, SearchService $searchService, EntityManagerInterface $manager): Response
+    public function doAction(PPBaseRepository $repo, TechnicRepository $technicsRepo, CategoryRepository $categoriesRepo, SearchService $searchService, EntityManagerInterface $manager, SluggerInterface $slugger): Response
     {
+
+        $technics = $technicsRepo->findAll();
+
+        foreach ($technics as $technic) {
+
+            $technic->setNameSlug(strtolower($slugger->slug( $technic->getName())));
+
+        }
+
+        $manager->flush();
+
+
 
         /* 
 
@@ -51,7 +65,7 @@ class OneShotController extends AbstractController
         
         $manager->flush();
 
-        */ 
+        
        
         
             $presentations = $repo->findAll();
@@ -66,7 +80,7 @@ class OneShotController extends AbstractController
 
             foreach ($categories as $category) {
                 $searchService->index($em, $category);
-            } 
+            } */ 
         
 /*  
         $places = $placesRepo->findAll();
@@ -80,9 +94,9 @@ class OneShotController extends AbstractController
                 ]
             );
 
-        } */
+        }
 
-        $manager->flush();
+        $manager->flush(); */
 
         $this->addFlash(
             'success',

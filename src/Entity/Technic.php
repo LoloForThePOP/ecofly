@@ -131,7 +131,7 @@ class Technic implements Serializable
     private $licence;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $nameSlug;
 
