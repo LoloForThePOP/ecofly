@@ -216,8 +216,8 @@ class TechnicController extends AbstractController
 
 
     /**
-     * @Route("/technic/show/{nameSlug}", name="show_technic_by_slug")
-     * @Route("/technic/show-by-id/{id}")
+     * @Route("/solution/{nameSlug}", name="show_technic_by_slug", priority=2)
+     * @Route("/solution/show-by-id/{id}", name="show_technic_by_id")
      */
     public function show(Technic $technic, Request $request,  EntityManagerInterface $manager, TreatItem $specificTreatments, ImageResizer $imageResizer): Response
     {
